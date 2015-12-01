@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Endless Faller</title>
+	<script type="text/javascript" src="js/lib/phaser.min.js"></script>
+	<script type="text/javascript" src="js/boot.js"></script>
+	<script type="text/javascript" src="js/preload.js"></script>
+	<script type="text/javascript" src="js/gametitle.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/gameover.js"></script>
+	<script type="text/javascript" src="js/shop.js"></script>
+	<script type="text/javascript" src="js/scores.js"></script>
+
+	<style type="text/css">
+		body {
+			margin: 0;
+		}
+	</style>
+	<script type="text/javascript">
+		(function() {
+
+				//Create a new game that fills the screen
+				game = new Phaser.Game(800, 600, Phaser.AUTO);
+
+				//Add all states
+				game.state.add("Boot", Boot);
+				game.state.add("Preload", Preload);
+				game.state.add("GameTitle", GameTitle);
+				game.state.add("Main", Main);
+				game.state.add("GameOver", GameOver);
+				game.state.add("Shop", Shop);
+				game.state.add("Scores", Scores);
+
+				//Start the first state
+				game.state.start("Boot");
+
+			})();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -7,7 +7,6 @@ var Main = function(game){
 var background;
 var spikes;
 var scores;
-var key;
 
 Main.prototype = {
 
@@ -47,6 +46,8 @@ Main.prototype = {
 
 		//Add the player to the screen
 		me.createPlayer();
+		me.createKey();
+
 
 		//Create the score label
 		me.createScore();
@@ -54,7 +55,7 @@ Main.prototype = {
 		//Add a platform every #  = 1000 seconds
 		me.timer = game.time.events.loop(1000, me.addPlatform, me);
 
-		me.timer = game.time.events.loop(15000, me.generateKey,me);
+		me.timer = game.time.events.loop(8000, me.createKey,me);
 
 	    //Enable cursor keys so we can create some controls
 	    me.cursors = me.game.input.keyboard.createCursorKeys();
@@ -66,8 +67,11 @@ Main.prototype = {
 
 		//Make the sprite collide with the ground layer
 		me.game.physics.arcade.collide(me.player, me.platforms);
+		me.game.physics.arcade.collide(me.player, me.key,me.collecKey,null,this);
+
 
 		me.player.body.velocity.x = 0;
+
 
 	    //Make the player go left
 	    if(me.cursors.left.isDown){
@@ -90,27 +94,6 @@ Main.prototype = {
 
 	},
 
-	    generateKey: function(){
-
-        // Chose a random place on the grid.
-        // X is between 0 and 585 (39*15)
-        // Y is between 0 and 435 (29*15)
-
-
-		var me = this;
-
-        var randomX = Math.floor(Math.random() * 600 ),
-            randomY =550;
-
-        // Add a new key.
-        key = game.add.sprite(randomX, randomY, 'key');
-        key.scale.setTo(0.2,0.2);
-
-        me.game.physics.arcade.enable(me.key);
-		//Make the player fall by applying gravity
-		//key.body.gravity.y = -1300;
-
-    },
 
 	gameOver: function(){
 		this.game.state.start('Main');
@@ -160,6 +143,26 @@ Main.prototype = {
 
 	},
 
+		createKey: function(){
+
+		var me = this;
+		var randomX = Math.floor(Math.random() * 600 ),
+            randomY =550;
+
+		//Add the key to the game by creating a new sprite
+		me.key = me.game.add.sprite(randomX, randomY, 'key');
+
+		//Enable physics on the key
+		me.game.physics.arcade.enable(me.key);
+		//Make the player fall by applying gravity
+		me.key.body.gravity.y = -50;
+		//Make the player collide with the game boundaries
+		me.key.body.collideWorldBounds = true;
+
+		me.key.scale.setTo(0.2,0.2);
+
+	},
+
 	createPlayer: function(){
 
 		var me = this;
@@ -167,7 +170,6 @@ Main.prototype = {
 		//Add the player to the game by creating a new sprite
 		me.player = me.game.add.sprite(me.game.world.centerX, 400, 'player');
 
-		//me.player = me.game.add.sprite(32, game.world.height - 150, 'player');
 		//Enable physics on the player
 		me.game.physics.arcade.enable(me.player);
 		//Make the player fall by applying gravity
@@ -190,6 +192,15 @@ Main.prototype = {
 		me.scoreLabel.scale.setTo(0.45,0.45);
 
 		me.scoreLabel.align = 'center';
+
+	},
+
+
+	collecKey: function(){
+
+		var me = this;
+
+		me.key.kill();
 
 	},
 

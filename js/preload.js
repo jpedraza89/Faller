@@ -31,7 +31,6 @@ Preload.prototype = {
 		//this adds misc elements
 		this.game.load.image('logo', 'assets/logo.png');
 
-		var keys;
 
 
 	},

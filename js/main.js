@@ -1,5 +1,5 @@
 "use strict";
-var Main = function(game){
+var Main = function(game) {
 
 
 };
@@ -7,6 +7,10 @@ var Main = function(game){
 var background;
 var spikes;
 var scores;
+
+
+var keyscore = 0;
+var keyscoreText;
 
 Main.prototype = {
 
@@ -18,10 +22,10 @@ Main.prototype = {
 		background = game.add.tileSprite(0, 0, 800, 600, 'background');
 
 		spikes = this.game.add.sprite(0, 0, 'spikes');
-		spikes.scale.setTo(2,1);
+		spikes.scale.setTo(2, 1);
 
 		scores = this.game.add.sprite(342, 25, 'scores');
-		scores.scale.setTo(0.85,0.85);
+		scores.scale.setTo(0.85, 0.85);
 
 
 		//The spacing for the initial platforms
@@ -55,10 +59,16 @@ Main.prototype = {
 		//Add a platform every #  = 1000 seconds
 		me.timer = game.time.events.loop(1000, me.addPlatform, me);
 
-		me.timer = game.time.events.loop(8000, me.createKey,me);
+		me.timer = game.time.events.loop(8000, me.createKey, me);
 
-	    //Enable cursor keys so we can create some controls
-	    me.cursors = me.game.input.keyboard.createCursorKeys();
+		//Enable cursor keys so we can create some controls
+		me.cursors = me.game.input.keyboard.createCursorKeys();
+
+
+		keyscoreText = me.game.add.text(700, 50, keyscore, {
+			fill: "#fff"
+		});
+
 
 	},
 
@@ -67,61 +77,61 @@ Main.prototype = {
 
 		//Make the sprite collide with the ground layer
 		me.game.physics.arcade.collide(me.player, me.platforms);
-		me.game.physics.arcade.collide(me.player, me.key,me.collecKey,null,this);
+		me.game.physics.arcade.collide(me.player, me.key, me.collecKey, null, this);
 
 
 		me.player.body.velocity.x = 0;
 
 
-	    //Make the player go left
-	    if(me.cursors.left.isDown){
-	    	me.player.body.velocity.x += -400;
-	    }
-	    //Make the player go right
-	    if(me.cursors.right.isDown){
-	    	me.player.body.velocity.x += 400;
-	    }
+		//Make the player go left
+		if (me.cursors.left.isDown) {
+			me.player.body.velocity.x += -400;
+		}
+		//Make the player go right
+		if (me.cursors.right.isDown) {
+			me.player.body.velocity.x += 400;
+		}
 
-	    //Check if the player is touching the top
-	    if(me.player.body.position.y <= 5){
-	    	me.gameOver();
+		//Check if the player is touching the top
+		if (me.player.body.position.y <= 5) {
+			me.gameOver();
 
 			this.game.state.start("GameOver");
-	    }
+		}
 
-	        //  Scroll the background
-    	background.tilePosition.y += 2;
+		//  Scroll the background
+		background.tilePosition.y += 2;
 
 	},
 
 
-	gameOver: function(){
+	gameOver: function() {
 		this.game.state.start('Main');
 	},
 
-	addTile: function(x, y){
+	addTile: function(x, y) {
 
 		var me = this;
 
 		//Get a tile that is not currently on screen
-	    var tile = me.platforms.getFirstDead();
+		var tile = me.platforms.getFirstDead();
 
-	    //Reset it to the specified coordinates
-	    tile.reset(x, y);
-	    tile.body.gravity.y = -90;
-	    tile.body.immovable = true;
+		//Reset it to the specified coordinates
+		tile.reset(x, y);
+		tile.body.gravity.y = -90;
+		tile.body.immovable = true;
 
-	    //When the tile leaves the screen, kill it
-	    tile.checkWorldBounds = true;
-	    tile.outOfBoundsKill = true;
+		//When the tile leaves the screen, kill it
+		tile.checkWorldBounds = true;
+		tile.outOfBoundsKill = true;
 	},
 
-	addPlatform: function(y){
+	addPlatform: function(y) {
 
 		var me = this;
 
 		//If no y position is supplied, render it just outside of the screen
-		if(typeof(y) == "undefined"){
+		if (typeof(y) == "undefined") {
 			y = 600;
 			//Increase the players score
 			me.incrementScore();
@@ -131,23 +141,23 @@ Main.prototype = {
 		var tilesNeeded = Math.ceil(me.game.world.width / me.tileWidth);
 
 		//Add a hole randomly somewhere
-	    var hole = Math.floor(Math.random() * (tilesNeeded));
+		var hole = Math.floor(Math.random() * (tilesNeeded));
 
-	    //Keep creating tiles next to each other until we have an entire row
-	    //Don't add tiles where the random hole is
-	    for (var i = 0; i < tilesNeeded; i++){
-	        if (i != hole && i != hole + 1){
-	        	this.addTile(i * me.tileWidth, y);
-	        }
-	    }
+		//Keep creating tiles next to each other until we have an entire row
+		//Don't add tiles where the random hole is
+		for (var i = 0; i < tilesNeeded; i++) {
+			if (i != hole && i != hole + 1) {
+				this.addTile(i * me.tileWidth, y);
+			}
+		}
 
 	},
 
-		createKey: function(){
+	createKey: function() {
 
 		var me = this;
-		var randomX = Math.floor(Math.random() * 600 ),
-            randomY =550;
+		var randomX = Math.floor(Math.random() * 600),
+			randomY = 550;
 
 		//Add the key to the game by creating a new sprite
 		me.key = me.game.add.sprite(randomX, randomY, 'key');
@@ -155,15 +165,15 @@ Main.prototype = {
 		//Enable physics on the key
 		me.game.physics.arcade.enable(me.key);
 		//Make the player fall by applying gravity
-		me.key.body.gravity.y = -50;
+		me.key.body.gravity.y = -100;
 		//Make the player collide with the game boundaries
 		me.key.body.collideWorldBounds = true;
 
-		me.key.scale.setTo(0.2,0.2);
+		me.key.scale.setTo(0.2, 0.2);
 
 	},
 
-	createPlayer: function(){
+	createPlayer: function() {
 
 		var me = this;
 
@@ -177,34 +187,41 @@ Main.prototype = {
 		//Make the player collide with the game boundaries
 		me.player.body.collideWorldBounds = true;
 
-		me.player.scale.setTo(0.4,0.4);
+		me.player.scale.setTo(0.4, 0.4);
 
 	},
 
-	createScore: function(){
+	createScore: function() {
 
 		var me = this;
 
 		var scoreFont = "100px Arial";
 
-		me.scoreLabel = me.game.add.text(400, 100, "0", {font: scoreFont, fill: "#fff"});
+		me.scoreLabel = me.game.add.text(400, 100, "0", {
+			font: scoreFont,
+			fill: "#fff"
+		});
 		me.scoreLabel.anchor.setTo(0.5, 0.5);
-		me.scoreLabel.scale.setTo(0.45,0.45);
+		me.scoreLabel.scale.setTo(0.45, 0.45);
 
 		me.scoreLabel.align = 'center';
 
 	},
 
 
-	collecKey: function(){
+	collecKey: function() {
 
 		var me = this;
 
 		me.key.kill();
 
+		keyscore += 1;
+		keyscoreText.text = keyscore;
+		keyscoreText.scale.setTo(1, 1);
+
 	},
 
-	incrementScore: function(){
+	incrementScore: function() {
 
 		var me = this;
 

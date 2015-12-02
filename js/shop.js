@@ -17,32 +17,29 @@ var Shop = function(game){},
       y: 190
     },
     bag : {
-      x: 140,
-      y: 190
+      x: 235,
+      y: 245
     },
     hairBack : {
-      x: 140,
-      y: 190
+      x: 160,
+      y: 185
     },
     hairFront : {
-      x: 140,
-      y: 190
+      x: 160,
+      y: 185
     },
     skirt : {
-      x: 140,
-      y: 190
+      y: 284
     },
     dress : {
-      x: 140,
-      y: 190
     },
     hoodBack : {
-      x: 140,
-      y: 190
+      x: 164,
+      y: 230
     },
     hoodFront : {
-      x: 140,
-      y: 190
+      x: 164,
+      y: 230
     }
   };
 

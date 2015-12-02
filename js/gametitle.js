@@ -7,17 +7,27 @@ GameTitle.prototype = {
 
 	create: function() {
 
-		var music;
+		//var music;
 
-		music = game.add.audio('music');
-		music.loop = true;
+		//music = game.add.audio('music');
+		//music.loop = true;
 
-		music.play();
+		//music.play();
 
 
 		var background;
 		background = game.add.tileSprite(0, 0, 800, 600, 'background');
 		background.scale.setTo(1, 1.02);
+
+		var scoreback;
+
+		scoreback = this.game.add.sprite(580, 0, 'scoreback');
+		scoreback.scale.setTo(1, 1);
+
+		keyscoreText = game.add.text(690, 30, 'Llaves: ' + keyscore, {
+			fill: "#fff"
+		});
+		keyscoreText.scale.setTo(0.7, 0.7);
 
 		var logo = this.game.add.sprite(180, 20, 'logo');
 		logo.scale.setTo(1, 1);

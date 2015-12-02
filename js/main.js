@@ -8,7 +8,7 @@ var background;
 var spikes;
 var scores;
 
-
+var scoreback;
 var keyscore = 0;
 var keyscoreText;
 
@@ -21,15 +21,14 @@ Main.prototype = {
 
 		background = game.add.tileSprite(0, 0, 800, 600, 'background');
 
+		scoreback = this.game.add.sprite(580, 0, 'scoreback');
+		scoreback.scale.setTo(1, 1);
+
 		spikes = this.game.add.sprite(0, 0, 'spikes');
 		spikes.scale.setTo(2, 1);
 
-		scores = this.game.add.sprite(342, 25, 'scores');
+		scores = this.game.add.sprite(580, 10, 'scores');
 		scores.scale.setTo(0.85, 0.85);
-
-
-		//The spacing for the initial platforms
-		me.spacing = 600;
 
 		//Set the initial score
 		me.score = 0;
@@ -59,15 +58,17 @@ Main.prototype = {
 		//Add a platform every #  = 1000 seconds
 		me.timer = game.time.events.loop(1000, me.addPlatform, me);
 
-		me.timer = game.time.events.loop(8000, me.createKey, me);
+		me.timer = game.time.events.loop(9000, me.createKey, me);
 
 		//Enable cursor keys so we can create some controls
 		me.cursors = me.game.input.keyboard.createCursorKeys();
 
 
-		keyscoreText = me.game.add.text(700, 50, keyscore, {
+		keyscoreText = me.game.add.text(690, 30, 'Llaves: ' + keyscore, {
 			fill: "#fff"
 		});
+		keyscoreText.scale.setTo(0.7, 0.7);
+
 
 
 	},
@@ -103,7 +104,6 @@ Main.prototype = {
 		background.tilePosition.y += 2;
 
 	},
-
 
 	gameOver: function() {
 		this.game.state.start('Main');
@@ -197,7 +197,7 @@ Main.prototype = {
 
 		var scoreFont = "100px Arial";
 
-		me.scoreLabel = me.game.add.text(400, 100, "0", {
+		me.scoreLabel = me.game.add.text(640, 90, "0", {
 			font: scoreFont,
 			fill: "#fff"
 		});
@@ -216,8 +216,8 @@ Main.prototype = {
 		me.key.kill();
 
 		keyscore += 1;
-		keyscoreText.text = keyscore;
-		keyscoreText.scale.setTo(1, 1);
+		keyscoreText.text = 'Llaves: ' + keyscore;
+		keyscoreText.scale.setTo(0.7, 0.7);
 
 	},
 

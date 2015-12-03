@@ -54,9 +54,6 @@ GameTitle.prototype = {
 		var scoresButton = this.game.add.button(550, 460, 'scores_btn', this.startScores, this);
 
 
-		var facebooklogo = this.game.add.button(30, 50, 'facebook_logo');
-		facebooklogo.scale.setTo(0.05, 0.05);
-
 		var keyEmitter = this.add.emitter(400, 0, 600);
 		keyEmitter.makeParticles("key");
 		keyEmitter.maxParticleScale = 0.6;

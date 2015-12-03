@@ -67,7 +67,7 @@ Shop.prototype = {
 		scoreback = this.game.add.sprite(580, 0, 'scoreback');
 		scoreback.scale.setTo(1, 1);
 
-		keyscoreText = game.add.text(690, 30, 'Llaves: ' + keyscore, {
+		keyscoreText = game.add.text(30, 30, 'Llaves: ' + keyscore, {
 			fill: "#fff"
 		});
 		keyscoreText.scale.setTo(0.7, 0.7);

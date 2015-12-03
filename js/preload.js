@@ -20,7 +20,8 @@ Preload.prototype = {
 		this.game.load.image('scores','assets/my_score.png');
 		this.game.load.image('gameover','assets/gameover.png');
 		this.game.load.image('scoreback','assets/score_back.png');
-
+		this.game.load.image('logoleft','assets/logo_left.png');
+		this.game.load.image('gameinstruc','assets/gameinstruc.png');
 
 		this.game.load.audio('music', 'assets/music.mp3');
 		//this adds shop images

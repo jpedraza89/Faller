@@ -3,8 +3,9 @@ var Main = function(game) {
 
 
 };
-
+var gameinstruc;
 var background;
+var logoleft;
 var spikes;
 var scores;
 
@@ -21,7 +22,16 @@ Main.prototype = {
 
 		background = game.add.tileSprite(0, 0, 800, 600, 'background');
 
+		gameinstruc = game.add.sprite(game.world.centerX, game.world.centerY, 'gameinstruc');
+		gameinstruc.anchor.setTo(0.5, 0.5);
+
+		me.timer = game.time.events.loop(800, me.fadePicture, me);
+
+
 		scoreback = this.game.add.sprite(580, 0, 'scoreback');
+		scoreback.scale.setTo(1, 1);
+
+		logoleft = this.game.add.sprite(0, 0, 'logoleft');
 		scoreback.scale.setTo(1, 1);
 
 		spikes = this.game.add.sprite(0, 0, 'spikes');
@@ -56,6 +66,8 @@ Main.prototype = {
 		me.createScore();
 
 		//Add a platform every #  = 1000 seconds
+
+
 		me.timer = game.time.events.loop(1000, me.addPlatform, me);
 
 		me.timer = game.time.events.loop(9000, me.createKey, me);
@@ -229,6 +241,14 @@ Main.prototype = {
 
 		me.score += 1;
 		me.scoreLabel.text = me.score;
+
+	},
+
+	fadePicture: function() {
+
+	var me = this;
+
+		me.game.add.tween(gameinstruc).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
 
 	}
 };

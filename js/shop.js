@@ -1,4 +1,5 @@
 "use strict";
+
 var Shop = function(game){},
   maniquiDresses = [],
   maniquiSkirts = [],
@@ -29,9 +30,12 @@ var Shop = function(game){},
       y: 185
     },
     skirt : {
+      x: 167,
       y: 284
     },
     dress : {
+      x: 169,
+      y: 238
     },
     hoodBack : {
       x: 164,
@@ -46,6 +50,7 @@ var Shop = function(game){},
 Shop.prototype = {
 
   	create: function(){
+
       var that = this,
         background,
         closet,
@@ -58,6 +63,18 @@ Shop.prototype = {
   		background = game.add.tileSprite(0, 0, 800, 600, 'background_shop');
   		background.scale.setTo(1.04,1.035);
 
+		var scoreback;
+
+		scoreback = this.game.add.sprite(580, 0, 'scoreback');
+		scoreback.scale.setTo(1, 1);
+
+		keyscoreText = game.add.text(690, 30, 'Llaves: ' + keyscore, {
+			fill: "#fff"
+		});
+		keyscoreText.scale.setTo(0.7, 0.7);
+
+
+
   		closet = this.game.add.sprite(330, 50, 'closet');
   		closet.scale.setTo(1,1);
 
@@ -68,6 +85,13 @@ Shop.prototype = {
       buttonHood = this.game.add.button(200, 510, "buttonHood", this.shopHood, this);
       buttonSkirt = this.game.add.button(250, 510, "buttonSkirt", this.shopSkirt, this);
       buttonDress = this.game.add.button(300, 510, "buttonDress", this.shopDress, this);
+
+		var menu_btn = this.game.add.button(450, 500, 'menu_btn', this.restartGame, this);
+		menu_btn.scale.setTo(0.7, 0.7);
+
+
+
+
 
 
 	},

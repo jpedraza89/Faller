@@ -28,7 +28,7 @@ Preload.prototype = {
 
 		this.game.load.image('dollUnderware', 'assets/maniqui/maniqui.png');
 		//dress
-		this.game.load.image('buttonDress', 'assets/vastido1.png');
+		this.game.load.image('buttonDress', 'assets/shopbuttons/dressbutton.png');
 		this.game.load.image('dress1', 'assets/vestido/vestido1.png');
 		this.game.load.image('dress2', 'assets/vestido/vestido2.png');
 		this.game.load.image('dress3', 'assets/vestido/vestido3.png');
@@ -38,7 +38,7 @@ Preload.prototype = {
 		this.game.load.image('maniquiDress3', 'assets/maniquivestido/maniquivestido3.png');
 		this.game.load.image('maniquiDress4', 'assets/maniquivestido/maniquivestido4.png');
 		//shopSkirt
-		this.game.load.image('buttonSkirt', 'assets/vastido1.png');
+		this.game.load.image('buttonSkirt', 'assets/shopbuttons/skirtbutton.png');
 		this.game.load.image('skirt1', 'assets/falda/falda1.png');
 		this.game.load.image('skirt2', 'assets/falda/falda2.png');
 		this.game.load.image('skirt3', 'assets/falda/falda3.png');
@@ -48,7 +48,7 @@ Preload.prototype = {
 		this.game.load.image('maniquiSkirt3', 'assets/maniquifalda/maniquifalda3.png');
 		this.game.load.image('maniquiSkirt4', 'assets/maniquifalda/maniquifalda4.png');
 		//shopBag
-		this.game.load.image('buttonBag', 'assets/vastido1.png');
+		this.game.load.image('buttonBag', 'assets/shopbuttons/bagbutton.png');
 		this.game.load.image('bag1', 'assets/bolsa/bolsa4.png');
 		this.game.load.image('bag2', 'assets/bolsa/bolsa3.png');
 		this.game.load.image('bag3', 'assets/bolsa/bolsa2.png');
@@ -58,7 +58,7 @@ Preload.prototype = {
 		this.game.load.image('maniquiBag3', 'assets/maniquiBolsas/maniquiBolsa3.png');
 		this.game.load.image('maniquiBag4', 'assets/maniquiBolsas/maniquiBolsa4.png');
 		//shopHair
-		this.game.load.image('buttonHair', 'assets/vastido1.png');
+		this.game.load.image('buttonHair', 'assets/shopbuttons/hairbutton.png');
 		this.game.load.image('hair1', 'assets/cabello/1/cabello1back.png');
 		this.game.load.image('hair2', 'assets/cabello/1/cabello1front.png');
 		this.game.load.image('hair3', 'assets/cabello/2/cabello2back.png');
@@ -71,7 +71,7 @@ Preload.prototype = {
 		this.game.load.image('maniquiHair3', 'assets/maniquicabello/maniquipelo3.png');
 		this.game.load.image('maniquiHair4', 'assets/maniquicabello/maniquipelo4.png');
 		//hood
-		this.game.load.image('buttonHood', 'assets/vastido1.png');
+		this.game.load.image('buttonHood', 'assets/shopbuttons/hoodbutton.png');
 		this.game.load.image('hood1', 'assets/capa/capa1/capa1back.png');
 		this.game.load.image('hood2', 'assets/capa/capa1/capa1front.png');
 		this.game.load.image('hood3', 'assets/capa/capa2/capa2back.png');

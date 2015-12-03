@@ -62,10 +62,6 @@ Shop.prototype = {
   		background = game.add.tileSprite(0, 0, 800, 600, 'background_shop');
   		background.scale.setTo(1.04,1.035);
 
-		var scoreback;
-
-		scoreback = this.game.add.sprite(580, 0, 'scoreback');
-		scoreback.scale.setTo(1, 1);
 
 		keyscoreText = game.add.text(30, 30, 'Llaves: ' + keyscore, {
 			fill: "#fff"
@@ -79,11 +75,11 @@ Shop.prototype = {
 
   		dollUnderware = this.game.add.sprite(position.doll.x, position.doll.y, "dollUnderware");
       dollUnderware.anchor.setTo(0.5, 0);
-      buttonBag = this.game.add.button(100, 510, "buttonBag", this.shopBag, this);
-      buttonHair = this.game.add.button(150, 510, "buttonHair", this.shopHair, this);
-      buttonHood = this.game.add.button(200, 510, "buttonHood", this.shopHood, this);
-      buttonSkirt = this.game.add.button(250, 510, "buttonSkirt", this.shopSkirt, this);
-      buttonDress = this.game.add.button(300, 510, "buttonDress", this.shopDress, this);
+      buttonBag = this.game.add.button(40, 505, "buttonBag", this.shopBag, this);
+      buttonHair = this.game.add.button(110, 505, "buttonHair", this.shopHair, this);
+      buttonHood = this.game.add.button(180, 507, "buttonHood", this.shopHood, this);
+      buttonSkirt = this.game.add.button(250, 505, "buttonSkirt", this.shopSkirt, this);
+      buttonDress = this.game.add.button(320, 507, "buttonDress", this.shopDress, this);
 
 		var menu_btn = this.game.add.button(450, 500, 'menu_btn', this.restartGame, this);
 		menu_btn.scale.setTo(0.7, 0.7);

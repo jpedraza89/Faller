@@ -167,9 +167,11 @@ Main.prototype = {
 		//Make the player fall by applying gravity
 		me.key.body.gravity.y = -100;
 		//Make the player collide with the game boundaries
-		me.key.body.collideWorldBounds = true;
 
 		me.key.scale.setTo(0.2, 0.2);
+
+		me.key.checkWorldBounds = true;
+		me.key.outOfBoundsKill = true;
 
 	},
 

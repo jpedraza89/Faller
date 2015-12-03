@@ -89,6 +89,8 @@ Preload.prototype = {
 		this.game.load.image('scores_btn', 'assets/scores_btn.png');
 		this.game.load.image('back_btn', 'assets/back_btn.png');
 		this.game.load.image('retry_btn', 'assets/retry_btn.png');
+		this.game.load.image('menu_btn', 'assets/menu_btn.png');
+
 
 		// This adds shop items
 		this.game.load.image('play_btn', 'assets/play_btn.png');

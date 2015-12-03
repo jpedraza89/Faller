@@ -6,7 +6,7 @@ var Shop = function(game){},
   maniquiBags = [],
   maniquiHairs= [],
   maniquiHoods= [],
-  styleGirl = { },
+  styleGirl = {},
   nameWeared = {},
   dollUnderware,
   positionYCloset = 190,
@@ -50,7 +50,6 @@ var Shop = function(game){},
 Shop.prototype = {
 
   	create: function(){
-
       var that = this,
         background,
         closet,
@@ -89,8 +88,14 @@ Shop.prototype = {
 		var menu_btn = this.game.add.button(450, 500, 'menu_btn', this.restartGame, this);
 		menu_btn.scale.setTo(0.7, 0.7);
 
+    if (localStorage.getItem('saveNameWeared')) {
+      nameWeared= localStorage.getItem('saveNameWeared');
+      nameWeared=JSON.parse(nameWeared);
+    } else {
+      localStorage.setItem('saveNameWeared', nameWeared);
+    }
 
-
+    this.wearedGirl();
 
 
 
@@ -295,6 +300,8 @@ Shop.prototype = {
     styleGirl.hairFront.anchor.setTo(0.5, 0);
     styleGirl.bag = this.game.add.sprite(position.bag.x, position.bag.y, nameWeared.bag);
     styleGirl.bag.anchor.setTo(0.5, 0);
+
+    localStorage.setItem('saveNameWeared', JSON.stringify(nameWeared));
   },
 	restartGame: function(){
 		this.game.state.start("GameTitle");

@@ -1,6 +1,5 @@
 "use strict";
 var GameTitle = function(game) {
-
 };
 
 GameTitle.prototype = {
@@ -14,7 +13,6 @@ GameTitle.prototype = {
 
 		//music.play();
 
-
 		var background;
 		background = game.add.tileSprite(0, 0, 800, 600, 'background');
 		background.scale.setTo(1, 1.02);
@@ -23,6 +21,13 @@ GameTitle.prototype = {
 
 		scoreback = this.game.add.sprite(580, 0, 'scoreback');
 		scoreback.scale.setTo(1, 1);
+
+		if(localStorage.getItem('numberOfKeys') === null) {
+			localStorage.setItem('numberOfKeys', 0);
+			keyscore = 0;
+		} else {
+			keyscore = parseInt(localStorage.getItem('numberOfKeys'));
+		}
 
 		keyscoreText = game.add.text(690, 30, 'Llaves: ' + keyscore, {
 			fill: "#fff"
@@ -63,8 +68,6 @@ GameTitle.prototype = {
 		keyEmitter.minRotation = 0;
 		keyEmitter.maxRotation = 40;
 		keyEmitter.flow(15000, 1000);
-
-
 
 	},
 

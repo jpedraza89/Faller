@@ -118,6 +118,7 @@ Main.prototype = {
 	},
 
 	gameOver: function() {
+		localStorage.setItem("numberOfKeys", keyscore);
 		this.game.state.start('Main');
 	},
 
@@ -189,10 +190,22 @@ Main.prototype = {
 
 	createPlayer: function() {
 
-		var me = this;
+		var me = this,
+			nameWeared;
+
+    nameWeared= localStorage.getItem('saveNameWeared');
+    nameWeared=JSON.parse(nameWeared);
 
 		//Add the player to the game by creating a new sprite
-		me.player = me.game.add.sprite(me.game.world.centerX, 400, 'player');
+		me.player = me.game.add.sprite(me.game.world.centerX, 400, 'dollUnderware');
+		me.player.addChild(game.make.sprite(-1, -15, nameWeared.hairBack));
+		me.player.addChild(game.make.sprite(-10, 40, nameWeared.hoodBack));
+		me.player.addChild(game.make.sprite(0, 0, "dollUnderware"));
+		me.player.addChild(game.make.sprite(0, 0, nameWeared.skirt));
+		me.player.addChild(game.make.sprite(-30, 50, nameWeared.dress));
+		me.player.addChild(game.make.sprite(0, 0, nameWeared.hoodFront));
+		me.player.addChild(game.make.sprite(15, -5, nameWeared.hairFront));
+		me.player.addChild(game.make.sprite(80, 60, nameWeared.bag));
 
 		//Enable physics on the player
 		me.game.physics.arcade.enable(me.player);
@@ -201,8 +214,7 @@ Main.prototype = {
 		//Make the player collide with the game boundaries
 		me.player.body.collideWorldBounds = true;
 
-		me.player.scale.setTo(0.4, 0.4);
-
+		me.player.scale.setTo(0.3, 0.3);
 	},
 
 	createScore: function() {

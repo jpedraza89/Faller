@@ -34,8 +34,8 @@ var Shop = function(game){},
       y: 284
     },
     dress : {
-      x: 169,
-      y: 238
+      x: 162,
+      y: 190
     },
     hoodBack : {
       x: 164,

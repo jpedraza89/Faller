@@ -221,68 +221,113 @@ Shop.prototype = {
     }
   },
 	waerHair: function(hair){
-    var index = parseInt(hair.key.substring(11,12));
+    if (keyscore > 0) {
+      keyscore--;
+      keyscoreText.destroy();
+      keyscoreText = game.add.text(80, 110, 'Llaves:' + keyscore, {
+  			fill: "#fff"
+  		});
+      keyscoreText.scale.setTo(0.7, 0.7);
 
-    if (((index*2)-1) === 5) {
-      nameWeared.hairBack = "";
-    } else {
-      nameWeared.hairBack = "hair" + ((index*2)-1);
+      var index = parseInt(hair.key.substring(11,12));
+
+      if (((index*2)-1) === 5) {
+        nameWeared.hairBack = "";
+      } else {
+        nameWeared.hairBack = "hair" + ((index*2)-1);
+      }
+
+      nameWeared.hairFront = "hair" + index * 2;
+
+      this.wearedGirl();
+      for (var i = 0; i < numberOfItems; i++) {
+        maniquiHairs[i].visible = true;
+      }
+      hair.visible = false;
     }
-
-    nameWeared.hairFront = "hair" + index * 2;
-
-    this.wearedGirl();
-    for (var i = 0; i < numberOfItems; i++) {
-      maniquiHairs[i].visible = true;
-    }
-    hair.visible = false;
 
 	},
 	waerBag: function(bag){
-    nameWeared.bag = "bag" + bag.key.substring(10,11);
-    this.wearedGirl();
-    for (var i = 0; i < numberOfItems; i++) {
-      maniquiBags[i].visible = true;
+    if (keyscore > 0) {
+      keyscore--;
+      keyscoreText.destroy();
+      keyscoreText = game.add.text(80, 110, 'Llaves:' + keyscore, {
+  			fill: "#fff"
+  		});
+      keyscoreText.scale.setTo(0.7, 0.7);
+
+      nameWeared.bag = "bag" + bag.key.substring(10,11);
+      this.wearedGirl();
+      for (var i = 0; i < numberOfItems; i++) {
+        maniquiBags[i].visible = true;
+      }
+      bag.visible = false;
     }
-    bag.visible = false;
 	},
 	waerDress: function(dress){
-    nameWeared.dress = "dress" + dress.key.substring(12,13);
+    if (keyscore > 0) {
+      keyscore--;
+      keyscoreText.destroy();
+      keyscoreText = game.add.text(80, 110, 'Llaves:' + keyscore, {
+  			fill: "#fff"
+  		});
+      keyscoreText.scale.setTo(0.7, 0.7);
 
-    if (nameWeared.skirt) {
-      delete nameWeared.skirt;
+      nameWeared.dress = "dress" + dress.key.substring(12,13);
+
+      if (nameWeared.skirt) {
+        delete nameWeared.skirt;
+      }
+      this.wearedGirl();
+      for (var i = 0; i < numberOfItems; i++) {
+        maniquiDresses[i].visible = true;
+      }
+      dress.visible = false;
     }
-    this.wearedGirl();
-    for (var i = 0; i < numberOfItems; i++) {
-      maniquiDresses[i].visible = true;
-    }
-    dress.visible = false;
 	},
 	waerSkirt: function(skirt){
-    nameWeared.skirt = "skirt" + skirt.key.substring(12,13);
-    if (nameWeared.dress) {
-      delete nameWeared.dress;
+    if (keyscore > 0) {
+      keyscore--;
+      keyscoreText.destroy();
+      keyscoreText = game.add.text(80, 110, 'Llaves:' + keyscore, {
+  			fill: "#fff"
+  		});
+      keyscoreText.scale.setTo(0.7, 0.7);
+
+      nameWeared.skirt = "skirt" + skirt.key.substring(12,13);
+      if (nameWeared.dress) {
+        delete nameWeared.dress;
+      }
+      this.wearedGirl();
+      for (var i = 0; i < numberOfItems; i++) {
+        maniquiSkirts[i].visible = true;
+      }
+      skirt.visible = false;
     }
-    this.wearedGirl();
-    for (var i = 0; i < numberOfItems; i++) {
-      maniquiSkirts[i].visible = true;
-    }
-    skirt.visible = false;
 	},
 	waerHood: function(hood){
-    var index = parseInt(hood.key.substring(11,12));
-    if (index !== 3 && index !== 4) {
-      nameWeared.hoodFront = "hood" + index * 2;
-    } else {
-      nameWeared.hoodFront = "";
-    }
-      nameWeared.hoodBack = "hood" + ((index*2)-1);
+    if (keyscore > 0) {
+      keyscore--;
+      keyscoreText.destroy();
+      keyscoreText = game.add.text(80, 110, 'Llaves:' + keyscore, {
+  			fill: "#fff"
+  		});
+      keyscoreText.scale.setTo(0.7, 0.7);
 
-    this.wearedGirl();
-    for (var i = 0; i < numberOfItems; i++) {
-      maniquiHoods[i].visible = true;
+      var index = parseInt(hood.key.substring(11,12));
+      if (index !== 3 && index !== 4) {
+        nameWeared.hoodFront = "hood" + index * 2;
+      } else {
+        nameWeared.hoodFront = "";
+      }
+        nameWeared.hoodBack = "hood" + ((index*2)-1);
+
+      this.wearedGirl();
+      for (var i = 0; i < numberOfItems; i++) {
+        maniquiHoods[i].visible = true;
+      }
+      hood.visible = false;
     }
-    hood.visible = false;
 	},
   wearedGirl: function () {
     //peloatras capa persona vestido capa delante pelo delante bolsa

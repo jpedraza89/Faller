@@ -223,8 +223,13 @@ Shop.prototype = {
 	waerHair: function(hair){
     var index = parseInt(hair.key.substring(11,12));
 
-    nameWeared.hairFront = "hair" + index * 2,
-    nameWeared.hairBack = "hair" + ((index*2)-1);
+    if (((index*2)-1) === 5) {
+      nameWeared.hairBack = "";
+    } else {
+      nameWeared.hairBack = "hair" + ((index*2)-1);
+    }
+
+    nameWeared.hairFront = "hair" + index * 2;
 
     this.wearedGirl();
     for (var i = 0; i < numberOfItems; i++) {
@@ -285,10 +290,8 @@ Shop.prototype = {
       styleGirl[object].destroy();
     }
     dollUnderware.destroy();
-    if (nameWeared.hairBack !== "hair5") {
-      styleGirl.hairBack = this.game.add.sprite(position.hairBack.x, position.hairBack.y, nameWeared.hairBack);
-      styleGirl.hairBack.anchor.setTo(0.5, 0);
-    }
+    styleGirl.hairBack = this.game.add.sprite(position.hairBack.x, position.hairBack.y, nameWeared.hairBack);
+    styleGirl.hairBack.anchor.setTo(0.5, 0);
     styleGirl.hoodBack = this.game.add.sprite(position.hoodBack.x, position.hoodBack.y, nameWeared.hoodBack);
     styleGirl.hoodBack.anchor.setTo(0.5, 0);
     dollUnderware = this.game.add.sprite(position.doll.x, position.doll.y, "dollUnderware");

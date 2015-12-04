@@ -1,7 +1,6 @@
 "use strict";
 var GameTitle = function(game) {
 };
-
 GameTitle.prototype = {
 
 	create: function() {
@@ -27,6 +26,10 @@ GameTitle.prototype = {
 			keyscore = 0;
 		} else {
 			keyscore = parseInt(localStorage.getItem('numberOfKeys'));
+		}
+
+		if (localStorage.getItem('saveNameWeared') === null) {
+			localStorage.setItem('saveNameWeared', JSON.stringify({}));
 		}
 
 		keyscoreText = game.add.text(690, 30, 'Llaves: ' + keyscore, {

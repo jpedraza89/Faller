@@ -12,6 +12,7 @@ var scores;
 var scoreback;
 var keyscore = 0;
 var keyscoreText;
+var scoreText;
 
 Main.prototype = {
 
@@ -253,6 +254,7 @@ Main.prototype = {
 
 		me.score += 1;
 		me.scoreLabel.text = me.score;
+		scoreText = me.scoreLabel.text;
 
 	},
 

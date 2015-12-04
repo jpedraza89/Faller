@@ -1,12 +1,26 @@
 "use strict";
-var Registration = function(game) {};
+var Registration = function(game) {},
+	name = "",
+	email = "",
+	bmdName,
+	bmdMail,
+	flagName = true,
+	flagAcceptConditions = false,
+	acceptConditionsButton,
+	sendInformation,
+	sendInformationButton,
+	timerFlash = 0;
 
 Registration.prototype = {
 
 	create: function() {
-
-
+		name = "";
+		email = "";
+		flagName = true;
+		flagAcceptConditions = false;
+		sendInformationButton = null;
 		var backgroundregistration;
+		var scoreFont = "100px Arial";
 
 		backgroundregistration = game.add.tileSprite(0, 0, 800, 600, 'backgroundregistration');
 		backgroundregistration.scale.setTo(1.02, 1);
@@ -14,12 +28,12 @@ Registration.prototype = {
 		var keys = this.game.add.sprite(320, 100, 'scores');
 		keys.scale.setTo(1.2, 1.2);
 
-		var textbox = this.game.add.sprite(260, 300, 'textbox');
-		textbox.scale.setTo(.3, .2);
-		var textbox = this.game.add.sprite(260, 350, 'textbox');
-		textbox.scale.setTo(.3, .2);
-		var checkbox = this.game.add.sprite(260, 390, 'unchecked');
-		textbox.scale.setTo(.3, .2);
+
+		var nameButton = this.game.add.button(260, 300, 'textbox', this.nameSelected, this);
+		nameButton.scale.setTo(.3, .2);
+		var mailButton = this.game.add.button(260, 350, 'textbox', this.mailSelected, this);
+		mailButton.scale.setTo(.3, .2);
+		acceptConditionsButton = this.game.add.button(260, 390, 'unchecked', this.acceptConditions, this);
 
 		var name = game.add.text(260, 274, 'Nombre:', {
 			fill: "#fff"
@@ -38,16 +52,124 @@ Registration.prototype = {
 		});
 		terms.scale.setTo(.5, .5);
 
+		this.scoreLabel = this.game.add.text(405, 210, "0", {
+			font: scoreFont,
+			fill: "#fff"
+		});
+		this.scoreLabel.anchor.setTo(0.5, 0.5);
+		this.scoreLabel.scale.setTo(0.5, 0.5);
+		this.scoreLabel.text = scoreText;
 
-		var registration_btn = this.game.add.button(120, 450, 'registration_btn', this.restartGame, this);
-		registration_btn.scale.setTo(0.7, 0.7);
+		this.scoreLabel.align = 'center';
+
+		bmdName = game.make.bitmapData(800, 200);
+    bmdName.context.font = '15px Arial';
+    bmdName.context.fillStyle = '#000000';
+    bmdName.addToWorld(200,250);
+
+		bmdMail = game.make.bitmapData(800, 200);
+    bmdMail.context.font = '15px Arial';
+    bmdMail.context.fillStyle = '#000000';
+    bmdMail.addToWorld(200, 300);
+		sendInformation = this.game.add.sprite(120, 450, 'retry_btn');
+
+		game.input.keyboard.addCallbacks(this, null, null, this.keyPress);
 
 
 		var back_btn = this.game.add.button(450, 460, 'back_btn', this.restartGame, this);
 		back_btn.scale.setTo(0.7, 0.7);
+	},
+	update: function() {
+
+		timerFlash = timerFlash + this.game.time.elapsed;
+		if (timerFlash < 300) {
+			this.antiFlash();
+		}
+		if (timerFlash > 300) {
+			this.flash();
+		}
+		if (timerFlash > 600) {
+			timerFlash = 0;
+		}
+
+		if (name.length > 3 && email.length > 3 && flagAcceptConditions) {
+			if (!sendInformationButton) {
+				sendInformation.destroy();
+				sendInformationButton = this.game.add.button(120, 450, 'menu_btn', this.sendInformationGame, this);
+			}
+		} else if(!sendInformation.key || sendInformationButton) {
+			sendInformationButton.destroy();
+			sendInformationButton = null;
+			sendInformation = this.game.add.sprite(120, 450, 'retry_btn');
+		}
+	},
+	flash: function () {
+		if (flagName) {
+			bmdName.cls();
+			bmdName.context.fillText(name, 64, 64);
+		} else {
+
+			bmdMail.cls();
+			bmdMail.context.fillText(email, 64, 64);
+		}
+	},
+	antiFlash: function () {
+		if (flagName) {
+			bmdName.cls();
+			bmdMail.cls();
+			bmdName.context.fillText(name + "_", 64, 64);
+			bmdMail.context.fillText(email, 64, 64);
+		} else {
+			bmdMail.cls();
+			bmdName.cls();
+			bmdName.context.fillText(name, 64, 64);
+			bmdMail.context.fillText(email + "_", 64, 64);
+		}
+	},
+	acceptConditions: function () {
+		acceptConditionsButton.destroy();
+		flagAcceptConditions = !flagAcceptConditions;
+		if (flagAcceptConditions) {
+			acceptConditionsButton = this.game.add.button(260, 390, 'checked', this.acceptConditions, this);
+		} else {
+			acceptConditionsButton = this.game.add.button(260, 390, 'unchecked', this.acceptConditions, this);
+		}
+	},
+	nameSelected: function () {
+		flagName = true;
+	},
+	mailSelected: function () {
+		flagName = false;
+	},
+	keyPress: function (char) {
+		if (flagName) {
+			bmdName.cls();
+			name = name + char;
+			bmdName.context.fillText(name, 64, 64);
+		} else {
+			bmdMail.cls();
+			email = email + char;
+			bmdMail.context.fillText(email, 64, 64);
+		}
 
 	},
-
+	sendInformationGame: function () {
+		var TestObject = Parse.Object.extend("TestObject");
+		var testObject = new TestObject();
+		var that = this;
+		testObject.save({
+			name: name,
+			email: email,
+			score : parseInt(scoreText),
+			conditions: flagAcceptConditions
+		}).then(function(object) {
+			alert("yay! it worked");
+			sendInformationButton.destroy();
+			that.game.state.start("GameTitle");
+			name = "";
+			email = "";
+		});
+	},
 	restartGame: function() {
 		this.game.state.start("GameTitle");
 	}

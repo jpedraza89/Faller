@@ -53,16 +53,12 @@ GameOver.prototype = {
 
 
 	},
-
 	retryGame: function() {
 		this.game.state.start("Main");
 	},
-
-		registration: function() {
+	registration: function() {
 		this.game.state.start("Registration");
 	},
-
-
 	restartGame: function() {
 		this.game.state.start("GameTitle");
 	}

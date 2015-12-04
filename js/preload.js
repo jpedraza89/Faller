@@ -23,6 +23,13 @@ Preload.prototype = {
 		this.game.load.image('scoreback','assets/score_back.png');
 		this.game.load.image('logoleft','assets/logo_left.png');
 		this.game.load.image('gameinstruc','assets/gameinstruc.png');
+		this.game.load.image('boutique_txt','assets/boutique_txt.png');
+		this.game.load.image('textbox','assets/textbox.png');
+
+		this.game.load.image('checked','assets/checked_checkbox.png');
+		this.game.load.image('unchecked','assets/unchecked_checkbox.png');
+
+
 
 
 		this.game.load.audio('music', 'assets/music.mp3');

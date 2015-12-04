@@ -53,25 +53,32 @@ Shop.prototype = {
       var that = this,
         background,
         closet,
+        boutique_txt,
         buttonBag,
         buttonHair,
         buttonHood,
         buttonSkirt,
+        keys,
         buttonDress;
 
   		background = game.add.tileSprite(0, 0, 800, 600, 'background_shop');
   		background.scale.setTo(1.04,1.035);
 
+		keys = this.game.add.sprite(40, 40, 'scores');
+		keys.scale.setTo(0.85, 0.85);
 
-		keyscoreText = game.add.text(30, 30, 'Llaves: ' + keyscore, {
+
+		keyscoreText = game.add.text(80, 110, 'Llaves:' + keyscore, {
 			fill: "#fff"
 		});
 		keyscoreText.scale.setTo(0.7, 0.7);
 
-
+  		boutique_txt = this.game.add.sprite(190, 100, 'boutique_txt');
+  		boutique_txt.scale.setTo(1,1);
 
   		closet = this.game.add.sprite(330, 50, 'closet');
   		closet.scale.setTo(1,1);
+
 
   		dollUnderware = this.game.add.sprite(position.doll.x, position.doll.y, "dollUnderware");
       dollUnderware.anchor.setTo(0.5, 0);
@@ -81,8 +88,8 @@ Shop.prototype = {
       buttonSkirt = this.game.add.button(250, 505, "buttonSkirt", this.shopSkirt, this);
       buttonDress = this.game.add.button(320, 507, "buttonDress", this.shopDress, this);
 
-		var menu_btn = this.game.add.button(450, 500, 'menu_btn', this.restartGame, this);
-		menu_btn.scale.setTo(0.7, 0.7);
+		var menu_btn = this.game.add.button(500, 510, 'menu_btn', this.restartGame, this);
+		menu_btn.scale.setTo(0.5, 0.5);
 
     if (localStorage.getItem('saveNameWeared')) {
       nameWeared= localStorage.getItem('saveNameWeared');

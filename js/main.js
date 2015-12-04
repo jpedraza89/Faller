@@ -199,11 +199,11 @@ Main.prototype = {
 		//Add the player to the game by creating a new sprite
 		me.player = me.game.add.sprite(me.game.world.centerX, 400, 'dollUnderware');
 		me.player.addChild(game.make.sprite(-47, 0, nameWeared.hairBack));
-		me.player.addChild(game.make.sprite(-20, 40, nameWeared.hoodBack));
+		me.player.addChild(game.make.sprite(-47, 10, nameWeared.hoodBack));
 		me.player.addChild(game.make.sprite(0, 0, "dollUnderware"));
 		me.player.addChild(game.make.sprite(0, 90, nameWeared.skirt));
-		me.player.addChild(game.make.sprite(-27, 50, nameWeared.dress));
-		me.player.addChild(game.make.sprite(10, 40, nameWeared.hoodFront));
+		me.player.addChild(game.make.sprite(0, 50, nameWeared.dress));
+		me.player.addChild(game.make.sprite(-40, 40 ,nameWeared.hoodFront));
 		me.player.addChild(game.make.sprite(-47, -40, nameWeared.hairFront));
 		me.player.addChild(game.make.sprite(80, 60, nameWeared.bag));
 

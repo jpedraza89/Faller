@@ -76,6 +76,6 @@ GameTitle.prototype = {
 		this.game.state.start("Shop");
 	},
 	startScores: function() {
-		this.game.state.start("Scores");
+		this.game.state.start("Registration");
 	}
 };

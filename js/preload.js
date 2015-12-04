@@ -10,6 +10,7 @@ Preload.prototype = {
 		this.game.load.image('tile', 'assets/tile.png');
 		this.game.load.image('player', 'assets/player.png');
 		this.game.load.image('background', 'assets/background.png');
+		this.game.load.image('backgroundregistration', 'assets/backgroundregistration.png');
 		this.game.load.image('ground', 'assets/ground.png');
 		this.game.load.image('background_shop', 'assets/background_shop.png');
 		this.game.load.image('closet', 'assets/closet.png');
@@ -22,6 +23,7 @@ Preload.prototype = {
 		this.game.load.image('scoreback','assets/score_back.png');
 		this.game.load.image('logoleft','assets/logo_left.png');
 		this.game.load.image('gameinstruc','assets/gameinstruc.png');
+
 
 		this.game.load.audio('music', 'assets/music.mp3');
 		//this adds shop images
@@ -90,6 +92,8 @@ Preload.prototype = {
 		this.game.load.image('back_btn', 'assets/back_btn.png');
 		this.game.load.image('retry_btn', 'assets/retry_btn.png');
 		this.game.load.image('menu_btn', 'assets/menu_btn.png');
+		this.game.load.image('registration_btn','assets/registration_btn.png');
+
 
 
 		// This adds shop items

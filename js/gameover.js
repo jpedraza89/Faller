@@ -26,11 +26,15 @@ GameOver.prototype = {
 
 
 
-		var retry_btn = this.game.add.button(170, 460, 'retry_btn', this.retryGame, this);
+		var retry_btn = this.game.add.button(80, 460, 'retry_btn', this.retryGame, this);
 		retry_btn.scale.setTo(0.7, 0.7);
 
+		var registration_btn = this.game.add.button(310, 460, 'registration_btn', this.registration, this);
+		registration_btn.scale.setTo(0.7, 0.7);
 
-		var menu_btn = this.game.add.button(460, 460, 'menu_btn', this.restartGame, this);
+
+
+		var menu_btn = this.game.add.button(530, 460, 'menu_btn', this.restartGame, this);
 		menu_btn.scale.setTo(0.7, 0.7);
 
 
@@ -52,6 +56,10 @@ GameOver.prototype = {
 
 	retryGame: function() {
 		this.game.state.start("Main");
+	},
+
+		registration: function() {
+		this.game.state.start("Registration");
 	},
 
 

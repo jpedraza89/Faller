@@ -39,7 +39,7 @@ var Shop = function(game){},
     },
     hoodBack : {
       x: 164,
-      y: 230
+      y: 210
     },
     hoodFront : {
       x: 164,

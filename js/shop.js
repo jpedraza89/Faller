@@ -26,8 +26,8 @@ var Shop = function(game){},
       y: 185
     },
     hairFront : {
-      x: 160,
-      y: 185
+      x: 180,
+      y: 150
     },
     skirt : {
       x: 167,

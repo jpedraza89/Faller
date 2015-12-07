@@ -162,7 +162,7 @@ Bases.prototype = {
 			email: email,
 			conditions: flagAcceptConditions
 		}).then(function(object) {
-			alert("Información Enviada");
+			//alert("Información Enviada");
 			sendInformationButton.destroy();
 			that.game.state.start("GameTitle");
 			name = "";

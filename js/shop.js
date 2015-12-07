@@ -64,7 +64,7 @@ Shop.prototype = {
   		background = game.add.tileSprite(0, 0, 800, 600, 'background_shop');
   		background.scale.setTo(1.04,1.035);
 
-		keys = this.game.add.sprite(10, 50, 'logo');
+		keys = this.game.add.sprite(0, 0, 'logo');
 		keys.scale.setTo(0.4, 0.4);
 
 

@@ -49,7 +49,7 @@ Bases.prototype = {
 		mailButton.scale.setTo(.3, .2);
 		acceptConditionsButton = this.game.add.button(260, 390, 'unchecked', this.acceptConditions, this);
 
-		var name = game.add.text(260, 274, 'Nombre:', {
+		var name = game.add.text(260, 274, 'Nickname:', {
 			fill: "#fff"
 		});
 		name.scale.setTo(.7, .7);

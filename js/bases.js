@@ -153,10 +153,10 @@ Bases.prototype = {
 
 	},
 	sendInformationGame: function () {
-		var TestObject = Parse.Object.extend("TestObject");
-		var testObject = new TestObject();
+		var users = Parse.Object.extend("users");
+		var users = new users();
 		var that = this;
-		testObject.save({
+		users.save({
 			name: name,
 			email: email,
 			score : parseInt(scoreText),

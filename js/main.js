@@ -274,7 +274,7 @@ Main.prototype = {
 
 	var me = this;
 
-		me.game.add.tween(gameinstruc).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+		me.game.add.tween(gameinstruc).to( { alpha: 0 }, 2500, Phaser.Easing.Linear.None, true);
 
 	}
 };

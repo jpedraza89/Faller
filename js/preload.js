@@ -100,6 +100,8 @@ Preload.prototype = {
 		this.game.load.image('retry_btn', 'assets/retry_btn.png');
 		this.game.load.image('menu_btn', 'assets/menu_btn.png');
 		this.game.load.image('registration_btn','assets/registration_btn.png');
+		this.game.load.image('send_btn', 'assets/send_btn.png');
+
 
 
 

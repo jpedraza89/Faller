@@ -50,7 +50,7 @@ Registration.prototype = {
 		terms.scale.setTo(.5, .5);
 
 		totalTime = this.game.endTime.getTime() - this.game.startTime.getTime();
-		game.add.text(390, 300, 'Tiempo '+totalTime / 1000, {
+		game.add.text(470, 200, 'Tiempo '+totalTime / 1000, {
 			fill: "#fff"
 		});
 		//totalTime.scale.setTo( .5, .5);
@@ -79,7 +79,8 @@ Registration.prototype = {
     bmdMail.context.font = '15px Arial';
     bmdMail.context.fillStyle = '#000000';
     bmdMail.addToWorld(200, 300);
-		sendInformation = this.game.add.sprite(120, 450, 'retry_btn');
+		sendInformation = this.game.add.sprite(150, 470, 'send_btn');
+		sendInformation.scale.setTo(1.1, 1.1);
 
 		game.input.keyboard.addCallbacks(this, null, null, this.keyPress);
 
@@ -103,7 +104,7 @@ Registration.prototype = {
 		if (name.length > 3 && email.length > 3 && flagAcceptConditions) {
 			if (!sendInformationButton) {
 				sendInformation.destroy();
-				sendInformationButton = this.game.add.button(120, 450, 'menu_btn', this.sendInformationGame, this);
+				sendInformationButton = this.game.add.button(150, 470, 'send_btn', this.sendInformationGame, this);
 			}
 		} else if(!sendInformation.key || sendInformationButton) {
 			sendInformationButton.destroy();
@@ -169,7 +170,7 @@ Registration.prototype = {
 			name: name,
 			email: email,
 			score : parseInt(scoreText),
-			totalTime: totalTime,
+			//totalTime: totalTime,
 			conditions: flagAcceptConditions
 		}).then(function(object) {
 			alert("yay! it worked");

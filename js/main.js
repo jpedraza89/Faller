@@ -39,10 +39,7 @@ Main.prototype = {
 		spikes = this.game.add.sprite(0, 0, 'spikes');
 		spikes.scale.setTo(2, 1);
 
-		scores = this.game.add.sprite(580, 10, 'scores');
-		scores.scale.setTo(0.85, 0.85);
-
-		scoreText = me.game.add.text(680, 80, 'Tiempo',{
+		scoreText = me.game.add.text(670, 75, 'Tiempo',{
 		fill: "#fff"});
 		scoreText.scale.setTo(0.85, 0.85);
 
@@ -85,7 +82,7 @@ Main.prototype = {
 		keyscoreText = me.game.add.text(690, 30, 'Llaves: ' + keyscore, {
 			fill: "#fff"
 		});
-		keyscoreText.scale.setTo(0.7, 0.7);
+		keyscoreText.scale.setTo(.8, .8);
 
 
 
@@ -240,12 +237,12 @@ Main.prototype = {
 
 		var scoreFont = "100px Arial";
 
-		me.scoreLabel = me.game.add.text(640, 90, "0", {
+		me.scoreLabel = me.game.add.text(770, 87, "0", {
 			font: scoreFont,
 			fill: "#fff"
 		});
 		me.scoreLabel.anchor.setTo(0.5, 0.5);
-		me.scoreLabel.scale.setTo(0.45, 0.45);
+		me.scoreLabel.scale.setTo(0.3, 0.3);
 
 		me.scoreLabel.align = 'center';
 
@@ -260,7 +257,7 @@ Main.prototype = {
 
 		keyscore += 1;
 		keyscoreText.text = 'Llaves: ' + keyscore;
-		keyscoreText.scale.setTo(0.7, 0.7);
+		keyscoreText.scale.setTo(.8, .8);
 
 	},
 

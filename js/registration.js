@@ -17,6 +17,7 @@ Registration.prototype = {
 	create: function() {
 		name = "";
 		email = "";
+		time: totalTime;
 		flagName = true;
 		flagAcceptConditions = false;
 		sendInformationButton = null;
@@ -36,7 +37,7 @@ Registration.prototype = {
 		mailButton.scale.setTo(.3, .2);
 		acceptConditionsButton = this.game.add.button(260, 390, 'unchecked', this.acceptConditions, this);
 
-		var name = game.add.text(260, 274, 'Nombre:', {
+		var name = game.add.text(260, 274, 'Nickname:', {
 			fill: "#fff"
 		});
 		name.scale.setTo(.7, .7);
@@ -49,7 +50,7 @@ Registration.prototype = {
 		});
 		terms.scale.setTo(.5, .5);
 
-		totalTime = this.game.endTime.getTime() - this.game.startTime.getTime();
+		var totalTime = this.game.endTime.getTime() - this.game.startTime.getTime();
 		game.add.text(470, 200, 'Tiempo '+totalTime / 1000, {
 			fill: "#fff"
 		});
@@ -163,14 +164,15 @@ Registration.prototype = {
 
 	},
 	sendInformationGame: function () {
-		var TestObject = Parse.Object.extend("TestObject");
-		var testObject = new TestObject();
+		var users = Parse.Object.extend("users");
+		var users = new users();
 		var that = this;
-		testObject.save({
-			name: name,
+		users.save({
+			nickname: name,
 			email: email,
 			score : parseInt(scoreText),
-			totalTime: totalTime,
+			points: keyscore,
+			time: totalTime,
 			conditions: flagAcceptConditions
 		}).then(function(object) {
 			alert("Información Enviada");
@@ -181,7 +183,7 @@ Registration.prototype = {
 		});
 	},
 	restartGame: function() {
-		this.game.state.start("GameTitle");
+		this.game.state.start("GameOver");
 	}
 
 

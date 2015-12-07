@@ -5,13 +5,6 @@ GameTitle.prototype = {
 
 	create: function() {
 
-		var music;
-
-		music = game.add.audio('music');
-		music.loop = true;
-
-		music.play();
-
 		var background;
 		background = game.add.tileSprite(0, 0, 800, 600, 'background');
 		background.scale.setTo(1, 1.02);
@@ -79,6 +72,6 @@ GameTitle.prototype = {
 		this.game.state.start("Shop");
 	},
 	startScores: function() {
-		this.game.state.start("Registration");
+		this.game.state.start("Scores");
 	}
 };

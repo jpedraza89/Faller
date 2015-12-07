@@ -30,7 +30,6 @@ Main.prototype = {
 
 		me.timer = game.time.events.loop(800, me.fadePicture, me);
 
-
 		scoreback = this.game.add.sprite(580, 0, 'scoreback');
 		scoreback.scale.setTo(1, 1);
 
@@ -42,6 +41,11 @@ Main.prototype = {
 
 		scores = this.game.add.sprite(580, 10, 'scores');
 		scores.scale.setTo(0.85, 0.85);
+
+		scoreText = me.game.add.text(680, 80, 'Tiempo',{
+		fill: "#fff"});
+		scoreText.scale.setTo(0.85, 0.85);
+
 
 		//Set the initial score
 		me.score = 0;
@@ -112,7 +116,7 @@ Main.prototype = {
 
 			me.gameOver();
 
-			this.game.state.start("GameOver");
+			this.game.state.start("Registration");
 		}
 
 		//  Scroll the background
@@ -274,7 +278,7 @@ Main.prototype = {
 
 	var me = this;
 
-		me.game.add.tween(gameinstruc).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true);
+		me.game.add.tween(gameinstruc).to( { alpha: 0 }, 5000, Phaser.Easing.Linear.None, true);
 
 	}
 };

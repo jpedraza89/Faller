@@ -5,12 +5,12 @@ GameTitle.prototype = {
 
 	create: function() {
 
-		//var music;
+		var music;
 
-		//music = game.add.audio('music');
-		//music.loop = true;
+		music = game.add.audio('music');
+		music.loop = true;
 
-		//music.play();
+		music.play();
 
 		var background;
 		background = game.add.tileSprite(0, 0, 800, 600, 'background');

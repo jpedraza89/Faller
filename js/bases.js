@@ -157,10 +157,8 @@ Bases.prototype = {
 		var users = new users();
 		var that = this;
 		users.save({
-			name: name,
+			nickname: name,
 			email: email,
-			score : parseInt(scoreText),
-			totalTime: totalTime,
 			conditions: flagAcceptConditions
 		}).then(function(object) {
 			alert("Información Enviada");

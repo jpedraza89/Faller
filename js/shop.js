@@ -228,6 +228,7 @@ Shop.prototype = {
   			fill: "#fff"
   		});
       keyscoreText.scale.setTo(0.7, 0.7);
+      localStorage.setItem('numberOfKeys', keyscore);
 
       var index = parseInt(hair.key.substring(11,12));
 
@@ -255,6 +256,7 @@ Shop.prototype = {
   			fill: "#fff"
   		});
       keyscoreText.scale.setTo(0.7, 0.7);
+      localStorage.setItem('numberOfKeys', keyscore);
 
       nameWeared.bag = "bag" + bag.key.substring(10,11);
       this.wearedGirl();
@@ -272,6 +274,7 @@ Shop.prototype = {
   			fill: "#fff"
   		});
       keyscoreText.scale.setTo(0.7, 0.7);
+      localStorage.setItem('numberOfKeys', keyscore);
 
       nameWeared.dress = "dress" + dress.key.substring(12,13);
 
@@ -293,6 +296,7 @@ Shop.prototype = {
   			fill: "#fff"
   		});
       keyscoreText.scale.setTo(0.7, 0.7);
+      localStorage.setItem('numberOfKeys', keyscore);
 
       nameWeared.skirt = "skirt" + skirt.key.substring(12,13);
       if (nameWeared.dress) {
@@ -313,6 +317,7 @@ Shop.prototype = {
   			fill: "#fff"
   		});
       keyscoreText.scale.setTo(0.7, 0.7);
+      localStorage.setItem('numberOfKeys', keyscore);
 
       var index = parseInt(hood.key.substring(11,12));
       if (index !== 3 && index !== 4) {

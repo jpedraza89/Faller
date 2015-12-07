@@ -23,7 +23,7 @@ Main.prototype = {
 
 		this.game.startTime = new Date();
 
-		background = game.add.tileSprite(0, 0, 800, 600, 'background_game');
+		background = game.add.tileSprite(0, 0, 800, 600, 'background');
 
 		gameinstruc = game.add.sprite(game.world.centerX, game.world.centerY, 'gameinstruc');
 		gameinstruc.anchor.setTo(0.5, 0.5);

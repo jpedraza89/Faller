@@ -1,5 +1,5 @@
 "use strict";
-
+var shopinstruc;
 var Shop = function(game){},
   maniquiDresses = [],
   maniquiSkirts = [],
@@ -50,6 +50,8 @@ var Shop = function(game){},
 Shop.prototype = {
 
   	create: function(){
+
+
       var that = this,
         background,
         closet,
@@ -60,6 +62,8 @@ Shop.prototype = {
         buttonSkirt,
         keys,
         buttonDress;
+
+        that.timer = game.time.events.loop(800, that.fadePicture, that);
 
   		background = game.add.tileSprite(0, 0, 800, 600, 'background_shop');
   		background.scale.setTo(1.04,1.035);
@@ -357,9 +361,17 @@ Shop.prototype = {
     styleGirl.bag = this.game.add.sprite(position.bag.x, position.bag.y, nameWeared.bag);
     styleGirl.bag.anchor.setTo(0.5, 0);
 
+    shopinstruc = game.add.sprite(game.world.centerX, game.world.centerY, 'shopinstruc');
+	shopinstruc.anchor.setTo(0.5, 0.5);
+
     localStorage.setItem('saveNameWeared', JSON.stringify(nameWeared));
   },
 	restartGame: function(){
 		this.game.state.start("GameTitle");
+	},
+
+	fadePicture: function() {
+	game.add.tween(shopinstruc).to( { alpha: 0 }, 2500, Phaser.Easing.Linear.None, true);
+
 	}
 };

@@ -64,11 +64,11 @@ Shop.prototype = {
   		background = game.add.tileSprite(0, 0, 800, 600, 'background_shop');
   		background.scale.setTo(1.04,1.035);
 
-		keys = this.game.add.sprite(0, 0, 'logo');
-		keys.scale.setTo(0.4, 0.4);
+		keys = this.game.add.sprite(40, 40, 'scores');
+		keys.scale.setTo(0.85, 0.85);
 
 
-		keyscoreText = game.add.text(70, 170, 'Llaves:' + keyscore, {
+		keyscoreText = game.add.text(80, 110, 'Llaves:' + keyscore, {
 			fill: "#fff"
 		});
 		keyscoreText.scale.setTo(0.7, 0.7);

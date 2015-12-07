@@ -17,6 +17,7 @@ Registration.prototype = {
 	create: function() {
 		name = "";
 		email = "";
+		time: totalTime;
 		flagName = true;
 		flagAcceptConditions = false;
 		sendInformationButton = null;
@@ -49,7 +50,7 @@ Registration.prototype = {
 		});
 		terms.scale.setTo(.5, .5);
 
-		totalTime = this.game.endTime.getTime() - this.game.startTime.getTime();
+		var totalTime = this.game.endTime.getTime() - this.game.startTime.getTime();
 		game.add.text(470, 200, 'Tiempo '+totalTime / 1000, {
 			fill: "#fff"
 		});
@@ -170,8 +171,8 @@ Registration.prototype = {
 			nickname: name,
 			email: email,
 			score : parseInt(scoreText),
-			time: totalTime,
 			points: keyscore,
+			time: totalTime,
 			conditions: flagAcceptConditions
 		}).then(function(object) {
 			alert("Información Enviada");
@@ -182,7 +183,7 @@ Registration.prototype = {
 		});
 	},
 	restartGame: function() {
-		this.game.state.start("GameTitle");
+		this.game.state.start("GameOver");
 	}
 
 

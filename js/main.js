@@ -21,6 +21,8 @@ Main.prototype = {
 
 		var me = this;
 
+		this.game.startTime = new Date();
+
 		background = game.add.tileSprite(0, 0, 800, 600, 'background');
 
 		gameinstruc = game.add.sprite(game.world.centerX, game.world.centerY, 'gameinstruc');
@@ -71,6 +73,9 @@ Main.prototype = {
 
 		me.timer = game.time.events.loop(1000, me.addPlatform, me);
 
+		me.clocktimer = game.time.events.loop(100, me.clocktimer, me);
+
+
 		me.timer = game.time.events.loop(9000, me.createKey, me);
 
 		//Enable cursor keys so we can create some controls
@@ -108,6 +113,7 @@ Main.prototype = {
 
 		//Check if the player is touching the top
 		if (me.player.body.position.y <= 5) {
+
 			me.gameOver();
 
 			this.game.state.start("GameOver");
@@ -120,6 +126,7 @@ Main.prototype = {
 
 	gameOver: function() {
 		localStorage.setItem("numberOfKeys", keyscore);
+		this.game.endTime = new Date();
 		this.game.state.start('Main');
 	},
 
@@ -138,6 +145,15 @@ Main.prototype = {
 		//When the tile leaves the screen, kill it
 		tile.checkWorldBounds = true;
 		tile.outOfBoundsKill = true;
+	},
+
+	clocktimer: function(y) {
+
+		var me = this;
+
+
+
+
 	},
 
 	addPlatform: function(y) {

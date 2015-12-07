@@ -7,6 +7,7 @@ var Registration = function(game) {},
 	flagName = true,
 	flagAcceptConditions = false,
 	acceptConditionsButton,
+	totalTime,
 	sendInformation,
 	sendInformationButton,
 	timerFlash = 0;
@@ -47,6 +48,13 @@ Registration.prototype = {
 		fill: "#fff"
 		});
 		terms.scale.setTo(.5, .5);
+
+		totalTime = this.game.endTime.getTime() - this.game.startTime.getTime();
+		game.add.text(390, 300, 'Tiempo '+totalTime / 1000, {
+			fill: "#fff"
+		});
+		//totalTime.scale.setTo( .5, .5);
+
 		var scoretext = game.add.text(310, 70, 'PUNTUACIÓN', {
 		fill: "#fff"
 		});
@@ -161,6 +169,7 @@ Registration.prototype = {
 			name: name,
 			email: email,
 			score : parseInt(scoreText),
+			totalTime: totalTime,
 			conditions: flagAcceptConditions
 		}).then(function(object) {
 			alert("yay! it worked");

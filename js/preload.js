@@ -10,6 +10,7 @@ Preload.prototype = {
 		this.game.load.image('tile', 'assets/tile.png');
 		this.game.load.image('player', 'assets/player.png');
 		this.game.load.image('background', 'assets/background.png');
+		this.game.load.image('background_game', 'assets/back_game.png');
 		this.game.load.image('backgroundregistration', 'assets/backgroundregistration.png');
 		this.game.load.image('ground', 'assets/ground.png');
 		this.game.load.image('background_shop', 'assets/background_shop.png');

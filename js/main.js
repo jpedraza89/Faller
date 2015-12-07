@@ -23,7 +23,7 @@ Main.prototype = {
 
 		this.game.startTime = new Date();
 
-		background = game.add.tileSprite(0, 0, 800, 600, 'background');
+		background = game.add.tileSprite(0, 0, 800, 600, 'background_game');
 
 		gameinstruc = game.add.sprite(game.world.centerX, game.world.centerY, 'gameinstruc');
 		gameinstruc.anchor.setTo(0.5, 0.5);
@@ -72,10 +72,6 @@ Main.prototype = {
 
 
 		me.timer = game.time.events.loop(1000, me.addPlatform, me);
-
-		me.clocktimer = game.time.events.loop(100, me.clocktimer, me);
-
-
 		me.timer = game.time.events.loop(9000, me.createKey, me);
 
 		//Enable cursor keys so we can create some controls

@@ -54,7 +54,7 @@ GameTitle.prototype = {
 
 
 
-		//var scoresButton = this.game.add.button(550, 460, 'scores_btn', this.startScores, this);
+		var scoresButton = this.game.add.button(550, 460, 'scores_btn', this.startScores, this);
 
 
 		var keyEmitter = this.add.emitter(400, 0, 600);
@@ -79,6 +79,6 @@ GameTitle.prototype = {
 		this.game.state.start("Shop");
 	},
 	startScores: function() {
-		this.game.state.start("Registration");
+		this.game.state.start("Scores");
 	}
 };

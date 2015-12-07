@@ -16,6 +16,13 @@ var Bases = function(game) {},
 Bases.prototype = {
 
 		create: function() {
+
+		var music;
+
+		music = game.add.audio('music');
+		music.loop = true;
+
+		music.play();
 		name = "";
 		email = "";
 		flagName = true;

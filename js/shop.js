@@ -371,7 +371,7 @@ Shop.prototype = {
 	},
 
 	fadePicture: function() {
-	game.add.tween(shopinstruc).to( { alpha: 0 }, 2500, Phaser.Easing.Linear.None, true);
+	game.add.tween(shopinstruc).to( { alpha: 0 }, 4500, Phaser.Easing.Linear.None, true);
 
 	}
 };

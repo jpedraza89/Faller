@@ -170,10 +170,10 @@ Registration.prototype = {
 			name: name,
 			email: email,
 			score : parseInt(scoreText),
-			//totalTime: totalTime,
+			totalTime: totalTime,
 			conditions: flagAcceptConditions
 		}).then(function(object) {
-			alert("yay! it worked");
+			alert("Información Enviada");
 			sendInformationButton.destroy();
 			that.game.state.start("GameTitle");
 			name = "";

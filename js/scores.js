@@ -27,7 +27,7 @@ Scores.prototype = {
 					var object = results[i];
 					//alert(object.id + ' - ' + object.get('playerName'));
 					if (object.get('time')) {
-						highScoreTable[i] = that.game.add.text(200, 100 + 30 * i, object.get('name'), {
+						highScoreTable[i] = that.game.add.text(200, 100 + 30 * i, object.get('nickname'), {
 							fill: "#fff"
 						});
 						highScoreTable[i] = that.game.add.text(200+300, 100 + 30 * i, object.get('time'), {

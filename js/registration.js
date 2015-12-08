@@ -42,7 +42,7 @@ Registration.prototype = {
 		});
 
 		totalTime = this.game.endTime.getTime() - this.game.startTime.getTime();
-		game.add.text(470, 200, 'Tiempo '+totalTime / 1000, {
+		game.add.text(260, 370, 'Tiempo '+totalTime / 1000, {
 			fill: "#fff"
 		});
 		//totalTime.scale.setTo( .5, .5);

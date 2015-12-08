@@ -120,9 +120,6 @@ Main.prototype = {
 
 	},
 
-	gameOver: function() {
-		localStorage.setItem("numberOfKeys", keyscore);
-	},
 
 	addTile: function(x, y) {
 
@@ -199,6 +196,8 @@ Main.prototype = {
 	FinalOver: function() {
 
 		this.game.state.start("Registration");
+
+		localStorage.setItem("numberOfKeys", keyscore);
 
 	},
 

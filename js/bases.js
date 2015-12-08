@@ -49,6 +49,18 @@ Bases.prototype = {
 		mailButton.scale.setTo(.3, .2);
 		acceptConditionsButton = this.game.add.button(260, 400, 'unchecked', this.acceptConditions, this);
 
+		if(localStorage.getItem('nickName') === null) {
+			localStorage.setItem('nickName', '');
+		} else {
+			bmdName = localStorage.getItem('nickName');
+		}
+
+		if(localStorage.getItem('E-Mail') === null) {
+			localStorage.setItem('E-Mail', '');
+		} else {
+			bmdMail = localStorage.getItem('E-Mail');
+		}
+
 		var name = game.add.text(260, 124, 'Nickname:', {
 			fill: "#fff"
 		});
@@ -154,20 +166,9 @@ Bases.prototype = {
 
 	},
 	sendInformationGame: function () {
-		var users = Parse.Object.extend("users");
-		var users = new users();
-		var that = this;
-		users.save({
-			nickname: name,
-			email: email,
-			conditions: flagAcceptConditions
-		}).then(function(object) {
-			//alert("Información Enviada");
-			sendInformationButton.destroy();
-			that.game.state.start("GameTitle");
-			name = "";
-			email = "";
-		});
+		localStorage.setItem('nickName', name);
+		localStorage.setItem('E-Mail', email);
+		this.game.state.start("GameTitle");
 	},
 
 	startGame: function() {

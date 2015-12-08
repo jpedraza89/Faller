@@ -111,9 +111,8 @@ Main.prototype = {
 		//Check if the player is touching the top
 		if (me.player.body.position.y <= 5) {
 
-			me.gameOver();
+			me.createEnd();
 
-			this.game.state.start("Registration");
 		}
 
 		//  Scroll the background
@@ -123,8 +122,6 @@ Main.prototype = {
 
 	gameOver: function() {
 		localStorage.setItem("numberOfKeys", keyscore);
-		this.game.endTime = new Date();
-		this.game.state.start('Main');
 	},
 
 	addTile: function(x, y) {
@@ -147,9 +144,6 @@ Main.prototype = {
 	clocktimer: function(y) {
 
 		var me = this;
-
-
-
 
 	},
 
@@ -199,6 +193,12 @@ Main.prototype = {
 
 		me.key.checkWorldBounds = true;
 		me.key.outOfBoundsKill = true;
+
+	},
+
+	FinalOver: function() {
+
+		this.game.state.start("Registration");
 
 	},
 
@@ -258,6 +258,35 @@ Main.prototype = {
 		keyscore += 1;
 		keyscoreText.text = 'Llaves: ' + keyscore;
 		keyscoreText.scale.setTo(.8, .8);
+
+	},
+
+	createEnd: function() {
+
+	var me = this;
+
+
+
+		var keyEmitter2 = this.add.emitter(400, 0, 10);
+		keyEmitter2.makeParticles("key2");
+		keyEmitter2.maxParticleScale = 0.6;
+		keyEmitter2.minParticleScale = 0.2;
+		keyEmitter2.setYSpeed(180, 190);
+		keyEmitter2.setXSpeed(-3, 3);
+		keyEmitter2.gravity = 150;
+		keyEmitter2.width = 600;
+		keyEmitter2.minRotation = 0;
+		keyEmitter2.maxRotation = 40;
+		keyEmitter2.flow(15000, 15000);
+
+
+	me.player.kill();
+	this.game.endTime = new Date();
+
+
+	me.timer = game.time.events.loop(1500, me.FinalOver, me);
+
+
 
 	},
 

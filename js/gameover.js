@@ -24,8 +24,6 @@ GameOver.prototype = {
 		});
 		keyscoreText.scale.setTo(0.7, 0.7);
 
-
-
 		var retry_btn = this.game.add.button(80, 460, 'retry_btn', this.retryGame, this);
 		retry_btn.scale.setTo(0.7, 0.7);
 

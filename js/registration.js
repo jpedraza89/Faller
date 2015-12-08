@@ -85,10 +85,10 @@ Registration.prototype = {
 		}).then(function(object) {
 			//alert("Información Enviada");
 			console.log('Información Enviada');
+			console.log(name);
+
 			sendInformationButton.destroy();
 			that.game.state.start("GameTitle");
-			name = "";
-			email = "";
 		});
 	},
 	restartGame: function() {

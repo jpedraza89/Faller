@@ -11,7 +11,8 @@ var Bases = function(game) {},
 	totalTime,
 	sendInformation,
 	sendInformationButton,
-	timerFlash = 0;
+	timerFlash = 0,
+	flagArroba = false;
 
 Bases.prototype = {
 
@@ -103,7 +104,7 @@ Bases.prototype = {
 			timerFlash = 0;
 		}
 
-		if (name.length > 3 && email.length > 3 && flagAcceptConditions) {
+		if (name.length > 3 && email.length > 3 && flagAcceptConditions && flagArroba) {
 			if (!sendInformationButton) {
 				sendInformation.destroy();
 				sendInformationButton = this.game.add.button(250, 450, 'play_btn', this.sendInformationGame, this);
@@ -156,12 +157,25 @@ Bases.prototype = {
 	keyPress: function (char) {
 		if (flagName) {
 			bmdName.cls();
-			name = name + char;
+			if (char.charCodeAt() < 10) {
+				name = name.substring(0, name.length - 1);
+			} else {
+				name = name + char;
+			}
 			bmdName.context.fillText(name, 64, 64);
 		} else {
 			bmdMail.cls();
-			email = email + char;
+			if (char.charCodeAt() < 10) {
+				email = email.substring(0, email.length - 1);
+			} else {
+				email = email + char;
+			}
 			bmdMail.context.fillText(email, 64, 64);
+			if (email.indexOf("@") > 1) {
+				flagArroba = true;
+			} else {
+				flagArroba = false;
+			}
 		}
 
 	},

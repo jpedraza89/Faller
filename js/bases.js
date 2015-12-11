@@ -35,20 +35,17 @@ Bases.prototype = {
 		backgroundregistration = game.add.tileSprite(0, 0, 800, 600, 'backgroundregistration');
 		backgroundregistration.scale.setTo(1.02, 1);
 
+		var dolls = this.game.add.sprite(0, 60, 'dolls');
+		dolls.scale.setTo(1, 1);
 
-		var logo = this.game.add.sprite(50, 20, 'logo');
-		logo.scale.setTo(.5, .5);
-		logo.angle = (2 + Math.random() * 5) * (Math.random() > 0.5 ? 1 : -1);
-		var logoTween = this.add.tween(logo);
-		logoTween.to({
-			angle: -logo.angle
-		}, 5000 + Math.random() * 5000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+		var reg_img = this.game.add.sprite(300, 180, 'reg_img');
+		reg_img.scale.setTo(.9, .9);
 
-		var nameButton = this.game.add.button(260, 150, 'textbox', this.nameSelected, this);
+		var nameButton = this.game.add.button(360, 300, 'textbox', this.nameSelected, this);
 		nameButton.scale.setTo(.3, .2);
-		var mailButton = this.game.add.button(260, 200, 'textbox', this.mailSelected, this);
+		var mailButton = this.game.add.button(360, 350, 'textbox', this.mailSelected, this);
 		mailButton.scale.setTo(.3, .2);
-		acceptConditionsButton = this.game.add.button(260, 400, 'unchecked', this.acceptConditions, this);
+		acceptConditionsButton = this.game.add.button(370, 380, 'unchecked', this.acceptConditions, this);
 
 		if(localStorage.getItem('nickName') === null) {
 			localStorage.setItem('nickName', '');
@@ -62,15 +59,15 @@ Bases.prototype = {
 			bmdMail = localStorage.getItem('E-Mail');
 		}
 
-		var name = game.add.text(260, 124, 'Nickname:', {
+		var name = game.add.text(360, 270, 'Nickname:', {
 			fill: "#fff"
 		});
 		name.scale.setTo(.7, .7);
-		var email = game.add.text(260, 170, 'E-Mail:', {
+		var email = game.add.text(360, 320, 'E-Mail:', {
 		fill: "#fff"
 		});
 		email.scale.setTo(.7, .7);
-		var terms = game.add.text(300, 405, 'Acepto Terminos y Condiciones', {
+		var terms = game.add.text(400, 385, 'Acepto Terminos y Condiciones', {
 		fill: "#fff"
 		});
 		terms.scale.setTo(.5, .5);
@@ -79,13 +76,13 @@ Bases.prototype = {
 		bmdName = game.make.bitmapData(800, 100);
     bmdName.context.font = '15px Arial';
     bmdName.context.fillStyle = '#000000';
-    bmdName.addToWorld(200,100);
+    bmdName.addToWorld(360,250);
 
 		bmdMail = game.make.bitmapData(800, 200);
     bmdMail.context.font = '15px Arial';
     bmdMail.context.fillStyle = '#000000';
-    bmdMail.addToWorld(200, 148);
-		sendInformation = this.game.add.sprite(250, 450, 'play_btn');
+    bmdMail.addToWorld(370, 300);
+		sendInformation = this.game.add.sprite(380, 420, 'reg_btn');
 		sendInformation.scale.setTo(.7, .7);
 
 		game.input.keyboard.addCallbacks(this, null, null, this.keyPress);
@@ -107,13 +104,13 @@ Bases.prototype = {
 		if (name.length > 3 && email.length > 3 && flagAcceptConditions && flagArroba) {
 			if (!sendInformationButton) {
 				sendInformation.destroy();
-				sendInformationButton = this.game.add.button(250, 450, 'play_btn', this.sendInformationGame, this);
+				sendInformationButton = this.game.add.button(370, 420, 'play_btn', this.sendInformationGame, this);
 			}
 		} else if(!sendInformation.key || sendInformationButton) {
 			sendInformationButton.destroy();
 			sendInformationButton = null;
-			sendInformation = this.game.add.sprite(250, 450, 'play_btn');
-			sendInformation.scale.setTo(.7, .7);
+			sendInformation = this.game.add.sprite(365, 420, 'reg_btn');
+			sendInformation.scale.setTo(.6, .6);
 		}
 	},
 	flash: function () {
@@ -143,9 +140,9 @@ Bases.prototype = {
 		acceptConditionsButton.destroy();
 		flagAcceptConditions = !flagAcceptConditions;
 		if (flagAcceptConditions) {
-			acceptConditionsButton = this.game.add.button(260, 400, 'checked', this.acceptConditions, this);
+			acceptConditionsButton = this.game.add.button(360, 380, 'checked', this.acceptConditions, this);
 		} else {
-			acceptConditionsButton = this.game.add.button(260, 400, 'unchecked', this.acceptConditions, this);
+			acceptConditionsButton = this.game.add.button(360, 380, 'unchecked', this.acceptConditions, this);
 		}
 	},
 	nameSelected: function () {

@@ -103,8 +103,9 @@ Preload.prototype = {
 		this.game.load.image('menu_btn', 'assets/menu_btn.png');
 		this.game.load.image('registration_btn','assets/registration_btn.png');
 		this.game.load.image('send_btn', 'assets/send_btn.png');
-
-
+		this.game.load.image('reg_img', 'assets/reg_img.png');
+		this.game.load.image('reg_btn', 'assets/reg_btn.png');
+		this.game.load.image('dolls', 'assets/dolls.png');
 
 
 		// This adds shop items

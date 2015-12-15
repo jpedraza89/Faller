@@ -27,6 +27,8 @@ Preload.prototype = {
 		this.game.load.image('shopinstruc','assets/shopinstruc.png');
 		this.game.load.image('boutique_txt','assets/boutique_txt.png');
 		this.game.load.image('textbox','assets/textbox.png');
+		this.game.load.image('frame','assets/frame.png');
+
 
 		this.game.load.image('checked','assets/checked_checkbox.png');
 		this.game.load.image('unchecked','assets/unchecked_checkbox.png');
@@ -106,6 +108,14 @@ Preload.prototype = {
 		this.game.load.image('reg_img', 'assets/reg_img.png');
 		this.game.load.image('reg_btn', 'assets/reg_btn.png');
 		this.game.load.image('dolls', 'assets/dolls.png');
+
+		//This adds Backgrounds for the Photo Shoot
+
+		this.game.load.image('back_1', 'assets/background1.png');
+		this.game.load.image('back_2', 'assets/background2.png');
+		this.game.load.image('back_3', 'assets/background3.png');
+
+
 
 
 		// This adds shop items

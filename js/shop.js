@@ -96,6 +96,11 @@ Shop.prototype = {
 		var menu_btn = this.game.add.button(500, 510, 'menu_btn', this.restartGame, this);
 		menu_btn.scale.setTo(0.5, 0.5);
 
+		//photo
+		var photo_btn = this.game.add.button(600, 510, 'menu_btn', this.photo, this);
+		photo_btn.scale.setTo(0.5, 0.5);
+
+
 		if (localStorage.getItem('saveNameWeared')) {
 			nameWeared = localStorage.getItem('saveNameWeared');
 			nameWeared = JSON.parse(nameWeared);
@@ -365,6 +370,10 @@ Shop.prototype = {
 		styleGirl.bag.anchor.setTo(0.5, 0);
 
 		localStorage.setItem('saveNameWeared', JSON.stringify(nameWeared));
+	},
+
+	photo: function() {
+	this.game.state.start("Photo");
 	},
 	restartGame: function() {
 		this.game.state.start("GameTitle");

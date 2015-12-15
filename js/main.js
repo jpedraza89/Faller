@@ -39,8 +39,9 @@ Main.prototype = {
 		spikes = this.game.add.sprite(0, 0, 'spikes');
 		spikes.scale.setTo(2, 1);
 
-		scoreText = me.game.add.text(670, 75, 'Tiempo',{
-		fill: "#fff"});
+		scoreText = me.game.add.text(670, 75, 'Tiempo', {
+			fill: "#fff"
+		});
 		scoreText.scale.setTo(0.85, 0.85);
 
 
@@ -206,8 +207,8 @@ Main.prototype = {
 		var me = this,
 			nameWeared;
 
-    nameWeared= localStorage.getItem('saveNameWeared');
-    nameWeared=JSON.parse(nameWeared);
+		nameWeared = localStorage.getItem('saveNameWeared');
+		nameWeared = JSON.parse(nameWeared);
 
 		//Add the player to the game by creating a new sprite
 		me.player = me.game.add.sprite(me.game.world.centerX, 400, 'dollUnderware');
@@ -216,7 +217,7 @@ Main.prototype = {
 		me.player.addChild(game.make.sprite(0, 0, "dollUnderware"));
 		me.player.addChild(game.make.sprite(0, 90, nameWeared.skirt));
 		me.player.addChild(game.make.sprite(-45, 0, nameWeared.dress));
-		me.player.addChild(game.make.sprite(-40, 40 ,nameWeared.hoodFront));
+		me.player.addChild(game.make.sprite(-40, 40, nameWeared.hoodFront));
 		me.player.addChild(game.make.sprite(-47, -40, nameWeared.hairFront));
 		me.player.addChild(game.make.sprite(80, 60, nameWeared.bag));
 
@@ -262,7 +263,7 @@ Main.prototype = {
 
 	createEnd: function() {
 
-	var me = this;
+		var me = this;
 
 
 
@@ -279,11 +280,11 @@ Main.prototype = {
 		keyEmitter2.flow(15000, 15000);
 
 
-	me.player.kill();
-	this.game.endTime = new Date();
+		me.player.kill();
+		this.game.endTime = new Date();
 
 
-	me.timer = game.time.events.loop(1500, me.FinalOver, me);
+		me.timer = game.time.events.loop(1500, me.FinalOver, me);
 
 
 
@@ -301,9 +302,11 @@ Main.prototype = {
 
 	fadePicture: function() {
 
-	var me = this;
+		var me = this;
 
-		me.game.add.tween(gameinstruc).to( { alpha: 0 }, 5000, Phaser.Easing.Linear.None, true);
+		me.game.add.tween(gameinstruc).to({
+			alpha: 0
+		}, 5000, Phaser.Easing.Linear.None, true);
 
 	}
 };

@@ -16,7 +16,7 @@ Scores.prototype = {
 
 		var users = Parse.Object.extend("users");
 		var query = new Parse.Query(users);
-		query.descending("time");
+		query.descending("score");
 		query.limit(10);
 
 		query.find({
@@ -26,11 +26,11 @@ Scores.prototype = {
 				for (var i = 0; i < results.length; i++) {
 					var object = results[i];
 					//alert(object.id + ' - ' + object.get('playerName'));
-					if (object.get('time')) {
+					if (object.get('score')) {
 						highScoreTable[i] = that.game.add.text(200, 100 + 30 * i, object.get('nickname'), {
 							fill: "#fff"
 						});
-						highScoreTable[i] = that.game.add.text(200+300, 100 + 30 * i, object.get('time'), {
+						highScoreTable[i] = that.game.add.text(200+300, 100 + 30 * i, object.get('score'), {
 							fill: "#fff"
 						});
 					}

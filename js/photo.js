@@ -3,76 +3,90 @@ var Photo = function(game) {};
 
 Photo.prototype = {
 
-		create: function() {
+	create: function() {
 
-			var background,
-				frame,
-				me = this;
+		var background_photo,
+			frame,
+			me = this;
 
-			background = game.add.tileSprite(0, 0, 800, 600, 'background');
-			frame = game.add.sprite( 250, 100, 'frame');
-			frame.scale.setTo(.7, .7);
+		background_photo = game.add.sprite(0, 0, 'background_photo');
 
+		background_photo.scale.setTo(.78, .78);
 
-			me.createPlayer();
-
-
-
-			var back_1 = this.game.add.button(125, 470, 'back_1', this.back_1, this);
-			back_1.scale.setTo(.15, .15);
+		frame = game.add.sprite(250, 100, 'frame');
+		frame.scale.setTo(.7, .7);
 
 
-			var back_2 = this.game.add.button(200, 470, 'back_2', this.back_2, this);
-			back_2.scale.setTo(.15, .15);
+		me.createPlayer();
+
+		me.createStickers();
 
 
-			var back_3 = this.game.add.button(270, 470, 'back_3', this.back_3, this);
-			back_3.scale.setTo(.15, .15);
 
-			var back_btn = this.game.add.button(550, 455, 'back_btn', this.restartGame, this);
-			back_btn.scale.setTo(.8, .8);
+		var polaroid_back_1 = this.game.add.button(125, 470, 'polaroid_back_1', this.back_1, this);
+		polaroid_back_1.scale.setTo(.15, .15);
 
-			var back_btn = this.game.add.button(550, 100, 'back_btn', this.restartGame, this);
-			back_btn.scale.setTo(.8, .8);
+		var polaroid_back_2 = this.game.add.button(200, 470, 'polaroid_back_2', this.back_2, this);
+		polaroid_back_2.scale.setTo(.15, .15);
+
+		var polaroid_back_3 = this.game.add.button(270, 470, 'polaroid_back_3', this.back_3, this);
+		polaroid_back_3.scale.setTo(.15, .15);
+
+		var back_btn = this.game.add.button(620, 455, 'back_btn', this.restartGame, this);
+		back_btn.scale.setTo(.4, .4);
+
+		var back_btn = this.game.add.button(620, 100, 'back_btn', this.restartGame, this);
+		back_btn.scale.setTo(.4, .4);
 
 
-		},
+	},
 
 
-		back_1: function() {
-				var me = this;
+	back_1: function() {
+		var me = this;
 
-			var back_1 = game.add.sprite(260, 110, 'back_1');
-			back_1.scale.setTo(.7, .8);
+		var back_1 = me.game.add.sprite(260, 110, 'back_1');
+		back_1.scale.setTo(.7, .8);
 
-			me.createPlayer();
+		me.player.bringToTop();
+
+		me.sticker1.bringToTop();
+		me.sticker2.bringToTop();
+		me.sticker3.bringToTop();
 
 
 	},
 
 	back_2: function() {
-				var me = this;
+		var me = this;
 
-		var back_2 = game.add.sprite(260, 110, 'back_2');
-			back_2.scale.setTo(.7, .8);
+		var back_2 = me.game.add.sprite(260, 110, 'back_2');
+		back_2.scale.setTo(.7, .8);
 
-			me.createPlayer();
+		me.player.bringToTop();
 
+		me.sticker1.bringToTop();
+		me.sticker2.bringToTop();
+		me.sticker3.bringToTop();
 	},
 
 	back_3: function() {
-				var me = this;
+		var me = this;
 
-		var back_3 = game.add.sprite(260, 110, 'back_3');
-			back_3.scale.setTo(.7, .8);
+		var back_3 = me.game.add.sprite(260, 110, 'back_3');
+		back_3.scale.setTo(.7, .8);
 
-			me.createPlayer();
+		me.player.bringToTop();
+
+		me.sticker1.bringToTop();
+		me.sticker2.bringToTop();
+		me.sticker3.bringToTop();
 
 
 	},
 
 
-		createPlayer: function() {
+	createPlayer: function() {
 
 		var me = this,
 			nameWeared;
@@ -91,8 +105,45 @@ Photo.prototype = {
 		me.player.addChild(game.make.sprite(-47, -40, nameWeared.hairFront));
 		me.player.addChild(game.make.sprite(80, 60, nameWeared.bag));
 
+		me.player.inputEnabled = true;
+		me.player.input.enableDrag(false, true);
+
 		me.player.scale.setTo(0.5, 0.5);
 	},
+
+		createStickers: function() {
+
+		var me = this;
+
+
+		//sticker1
+		me.sticker1 = me.game.add.sprite(100, 100, 'key');
+		me.sticker1.scale.setTo(.3, .3);
+		me.sticker1.inputEnabled = true;
+		me.sticker1.input.enableDrag(false, true);
+		me.sticker1.inputEnabled = true;
+		me.sticker1.input.enableDrag(false, true);
+
+		//sticker2
+		me.sticker2 = me.game.add.sprite(100, 150, 'key');
+		me.sticker2.scale.setTo(.3, .3);
+		me.sticker2.inputEnabled = true;
+		me.sticker2.input.enableDrag(false, true);
+		me.sticker2.inputEnabled = true;
+		me.sticker2.input.enableDrag(false, true);
+
+		//sticker3
+		me.sticker3 = me.game.add.sprite(100, 200, 'key');
+		me.sticker3.scale.setTo(.3, .3);
+		me.sticker3.inputEnabled = true;
+		me.sticker3.input.enableDrag(false, true);
+		me.sticker3.inputEnabled = true;
+		me.sticker3.input.enableDrag(false, true);
+
+
+	},
+
+
 
 	restartGame: function() {
 		this.game.state.start("GameTitle");

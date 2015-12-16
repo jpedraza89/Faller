@@ -14,6 +14,9 @@ Preload.prototype = {
 		this.game.load.image('backgroundregistration', 'assets/backgroundregistration.png');
 		this.game.load.image('ground', 'assets/ground.png');
 		this.game.load.image('background_shop', 'assets/background_shop.png');
+		this.game.load.image('background_photo', 'assets/background_photo.png');
+
+
 		this.game.load.image('closet', 'assets/closet.png');
 		this.game.load.image('Shop_Doll1', 'assets/Shop_Doll1.png');
 		this.game.load.image('key', 'assets/key.png');
@@ -116,6 +119,10 @@ Preload.prototype = {
 		this.game.load.image('back_3', 'assets/background3.png');
 
 
+
+		this.game.load.image('polaroid_back_1', 'assets/polaroid_back_1.png');
+		this.game.load.image('polaroid_back_2', 'assets/polaroid_back_2.png');
+		this.game.load.image('polaroid_back_3', 'assets/polaroid_back_3.png');
 
 
 		// This adds shop items

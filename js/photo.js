@@ -16,6 +16,7 @@ Photo.prototype = {
 		frame = game.add.sprite(250, 100, 'frame');
 		frame.scale.setTo(.7, .7);
 
+		Phaser.Canvas.setBackgroundColor(document.querySelector("canvas"), "rgb(100,25,30)")
 
 		me.createPlayer();
 
@@ -35,9 +36,8 @@ Photo.prototype = {
 		var back_btn = this.game.add.button(620, 455, 'back_btn', this.restartGame, this);
 		back_btn.scale.setTo(.4, .4);
 
-		var back_btn = this.game.add.button(620, 100, 'back_btn', this.restartGame, this);
-		back_btn.scale.setTo(.4, .4);
-
+		var back_btn = this.game.add.button(620, 100, 'back_btn', this.saveCanvasClick, this);
+		back_btn.scale.setTo(1, .4);
 
 	},
 
@@ -111,7 +111,7 @@ Photo.prototype = {
 		me.player.scale.setTo(0.5, 0.5);
 	},
 
-		createStickers: function() {
+	createStickers: function() {
 
 		var me = this;
 
@@ -140,6 +140,19 @@ Photo.prototype = {
 		me.sticker3.inputEnabled = true;
 		me.sticker3.input.enableDrag(false, true);
 
+
+	},
+	saveCanvas: function (link, filename) {
+		console.log(document.querySelector("canvas"));
+        link.href = document.querySelector("canvas").toDataURL();
+        link.download = filename;
+				console.log(link.href);
+	},
+	saveCanvasClick: function(){
+
+		var name = "name."+"png";
+
+		this.saveCanvas(this, name);
 
 	},
 

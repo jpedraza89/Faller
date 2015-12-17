@@ -17,6 +17,15 @@ Preload.prototype = {
 		this.game.load.image('background_photo', 'assets/background_photo.png');
 
 
+		//this adds Stickers
+		this.game.load.image('sticker1', 'assets/sticker1.png');
+		this.game.load.image('sticker2', 'assets/sticker2.png');
+		this.game.load.image('sticker3', 'assets/sticker3.png');
+		this.game.load.image('sticker4', 'assets/sticker4.png');
+		this.game.load.image('sticker5', 'assets/sticker5.png');
+		this.game.load.image('sticker6', 'assets/sticker6.png');
+
+
 		this.game.load.image('closet', 'assets/closet.png');
 		this.game.load.image('Shop_Doll1', 'assets/Shop_Doll1.png');
 		this.game.load.image('key', 'assets/key.png');
@@ -110,6 +119,10 @@ Preload.prototype = {
 		this.game.load.image('send_btn', 'assets/send_btn.png');
 		this.game.load.image('reg_img', 'assets/reg_img.png');
 		this.game.load.image('reg_btn', 'assets/reg_btn.png');
+		this.game.load.image('photo_btn', 'assets/photo_btn.png');
+		this.game.load.image('create_btn', 'assets/create_btn.png');
+
+
 		this.game.load.image('dolls', 'assets/dolls.png');
 
 		//This adds Backgrounds for the Photo Shoot

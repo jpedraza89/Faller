@@ -93,11 +93,11 @@ Shop.prototype = {
 		buttonSkirt = this.game.add.button(250, 505, "buttonSkirt", this.shopSkirt, this);
 		buttonDress = this.game.add.button(320, 507, "buttonDress", this.shopDress, this);
 
-		var menu_btn = this.game.add.button(500, 510, 'menu_btn', this.restartGame, this);
+		var menu_btn = this.game.add.button(450, 510, 'menu_btn', this.restartGame, this);
 		menu_btn.scale.setTo(0.5, 0.5);
 
 		//photo
-		var photo_btn = this.game.add.button(600, 510, 'menu_btn', this.photo, this);
+		var photo_btn = this.game.add.button(600, 510, 'photo_btn', this.photo, this);
 		photo_btn.scale.setTo(0.5, 0.5);
 
 

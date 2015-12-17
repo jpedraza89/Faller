@@ -22,22 +22,20 @@ Photo.prototype = {
 
 		me.createStickers();
 
-
-
-		var polaroid_back_1 = this.game.add.button(125, 470, 'polaroid_back_1', this.back_1, this);
+		var polaroid_back_1 = this.game.add.button(270, 470, 'polaroid_back_1', this.back_1, this);
 		polaroid_back_1.scale.setTo(.15, .15);
 
-		var polaroid_back_2 = this.game.add.button(200, 470, 'polaroid_back_2', this.back_2, this);
+		var polaroid_back_2 = this.game.add.button(350, 470, 'polaroid_back_2', this.back_2, this);
 		polaroid_back_2.scale.setTo(.15, .15);
 
-		var polaroid_back_3 = this.game.add.button(270, 470, 'polaroid_back_3', this.back_3, this);
+		var polaroid_back_3 = this.game.add.button(420, 470, 'polaroid_back_3', this.back_3, this);
 		polaroid_back_3.scale.setTo(.15, .15);
 
-		var back_btn = this.game.add.button(620, 455, 'back_btn', this.restartGame, this);
+		var back_btn = this.game.add.button(100, 500, 'back_btn', this.restartGame, this);
 		back_btn.scale.setTo(.4, .4);
 
-		var back_btn = this.game.add.button(620, 100, 'back_btn', this.saveCanvasClick, this);
-		back_btn.scale.setTo(1, .4);
+		var create_btn = this.game.add.button(560, 400, 'create_btn', this.saveCanvasClick, this);
+		create_btn.scale.setTo(.4, .4);
 
 	},
 
@@ -53,6 +51,9 @@ Photo.prototype = {
 		me.sticker1.bringToTop();
 		me.sticker2.bringToTop();
 		me.sticker3.bringToTop();
+		me.sticker4.bringToTop();
+		me.sticker5.bringToTop();
+		me.sticker6.bringToTop();
 
 
 	},
@@ -68,6 +69,9 @@ Photo.prototype = {
 		me.sticker1.bringToTop();
 		me.sticker2.bringToTop();
 		me.sticker3.bringToTop();
+		me.sticker4.bringToTop();
+		me.sticker5.bringToTop();
+		me.sticker6.bringToTop();
 	},
 
 	back_3: function() {
@@ -77,12 +81,12 @@ Photo.prototype = {
 		back_3.scale.setTo(.7, .8);
 
 		me.player.bringToTop();
-
 		me.sticker1.bringToTop();
 		me.sticker2.bringToTop();
 		me.sticker3.bringToTop();
-
-
+		me.sticker4.bringToTop();
+		me.sticker5.bringToTop();
+		me.sticker6.bringToTop();
 	},
 
 
@@ -117,7 +121,7 @@ Photo.prototype = {
 
 
 		//sticker1
-		me.sticker1 = me.game.add.sprite(100, 100, 'key');
+		me.sticker1 = me.game.add.sprite(100, 170, 'sticker1');
 		me.sticker1.scale.setTo(.3, .3);
 		me.sticker1.inputEnabled = true;
 		me.sticker1.input.enableDrag(false, true);
@@ -125,7 +129,7 @@ Photo.prototype = {
 		me.sticker1.input.enableDrag(false, true);
 
 		//sticker2
-		me.sticker2 = me.game.add.sprite(100, 150, 'key');
+		me.sticker2 = me.game.add.sprite(100, 220, 'sticker2');
 		me.sticker2.scale.setTo(.3, .3);
 		me.sticker2.inputEnabled = true;
 		me.sticker2.input.enableDrag(false, true);
@@ -133,15 +137,36 @@ Photo.prototype = {
 		me.sticker2.input.enableDrag(false, true);
 
 		//sticker3
-		me.sticker3 = me.game.add.sprite(100, 200, 'key');
+		me.sticker3 = me.game.add.sprite(100, 270, 'sticker3');
 		me.sticker3.scale.setTo(.3, .3);
 		me.sticker3.inputEnabled = true;
 		me.sticker3.input.enableDrag(false, true);
 		me.sticker3.inputEnabled = true;
 		me.sticker3.input.enableDrag(false, true);
 
-
+		//sticker4
+		me.sticker4 = me.game.add.sprite(620, 170, 'sticker4');
+		me.sticker4.scale.setTo(.3, .3);
+		me.sticker4.inputEnabled = true;
+		me.sticker4.input.enableDrag(false, true);
+		me.sticker4.inputEnabled = true;
+		me.sticker4.input.enableDrag(false, true);
+		//sticker5
+		me.sticker5 = me.game.add.sprite(620, 220, 'sticker5');
+		me.sticker5.scale.setTo(.3, .3);
+		me.sticker5.inputEnabled = true;
+		me.sticker5.input.enableDrag(false, true);
+		me.sticker5.inputEnabled = true;
+		me.sticker5.input.enableDrag(false, true);
+		//sticker4
+		me.sticker6 = me.game.add.sprite(620, 270, 'sticker6');
+		me.sticker6.scale.setTo(.3, .3);
+		me.sticker6.inputEnabled = true;
+		me.sticker6.input.enableDrag(false, true);
+		me.sticker6.inputEnabled = true;
+		me.sticker6.input.enableDrag(false, true);
 	},
+
 	saveCanvas: function (link, filename) {
 		console.log(document.querySelector("canvas"));
         link.href = document.querySelector("canvas").toDataURL();
@@ -153,7 +178,6 @@ Photo.prototype = {
 		var name = "name."+"png";
 
 		this.saveCanvas(this, name);
-
 	},
 
 

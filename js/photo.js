@@ -6,8 +6,8 @@ Photo.prototype = {
 	create: function() {
 
 		var background_photo,
-			frame,
-			me = this;
+		frame,
+		me = this;
 
 		background_photo = game.add.sprite(0, 0, 'background_photo');
 
@@ -93,7 +93,7 @@ Photo.prototype = {
 	createPlayer: function() {
 
 		var me = this,
-			nameWeared;
+		nameWeared;
 
 		nameWeared = localStorage.getItem('saveNameWeared');
 		nameWeared = JSON.parse(nameWeared);
@@ -169,9 +169,9 @@ Photo.prototype = {
 
 	saveCanvas: function (link, filename) {
 		console.log(document.querySelector("canvas"));
-        link.href = document.querySelector("canvas").toDataURL();
-        link.download = filename;
-				console.log(link.href);
+		link.href = document.querySelector("canvas").toDataURL();
+		link.download = filename;
+		console.log(link.href);
 	},
 	saveCanvasClick: function(){
 
@@ -180,11 +180,28 @@ Photo.prototype = {
 		this.saveCanvas(this, name);
 	},
 
+	// sendInformationGame: function () {
+	// 	var users = Parse.Object.extend("users");
+	// 	var users = new users();
+	// 	var that = this;
+	// 	users.save({
+	// 		nickname: name,
+	// 		email: email,
+	// 		conditions: true
+	// 	}).then(function(object) {
+	// 		//alert("Información Enviada");
+	// 		console.log('Información Enviada');
+	// 		console.log(name);
+
+	// 		sendInformationButton.destroy();
+	// 		that.game.state.start("GameTitle");
+	// 	});
+//
 
 
-	restartGame: function() {
-		this.game.state.start("GameTitle");
-	}
+		restartGame: function() {
+			this.game.state.start("GameTitle");
+		}
 
 
-};
+	};

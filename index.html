@@ -21,11 +21,15 @@
 			margin: 0;
 		}
 	</style>
+
+	</head>
+	<body>
+	</body>
 	<script type="text/javascript">
 		(function() {
 
 				//Create a new game that fills the screen
-				game = new Phaser.Game(800, 600, Phaser.AUTO);
+				game = new Phaser.Game(800, 600, Phaser.CANVAS);
 
 				//Add all states
 				game.state.add("Boot", Boot);
@@ -42,11 +46,9 @@
 				//Start the first state
 				game.state.start("Boot");
 
-				Parse.initialize("ijTDZ7vcvirSVUfeqc2smOgvGk30jnUkl12huevW", "jwysWF3qsv31CzJQVfOx95qnfOtvO9BSFKpagbzw");
+
+				Parse.initialize("WYe3Ig3m7VZnkdfsaDFUFD3uyb705Dsik1hJ5UD9", "LC8hwKoqCJNhnbnf8L2XhzVPWCy9mnAnI7QgtzrC");
 
 			})();
 		</script>
-	</head>
-	<body>
-	</body>
 </html>

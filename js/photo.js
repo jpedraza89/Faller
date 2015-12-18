@@ -4,6 +4,9 @@ var Photo = function(game) {};
 Photo.prototype = {
 
 	create: function() {
+		// Save to canvas variables
+		var clickToSave= document.getElementById('game');
+
 
 		var background_photo,
 		frame,
@@ -34,11 +37,14 @@ Photo.prototype = {
 		var back_btn = this.game.add.button(100, 500, 'back_btn', this.restartGame, this);
 		back_btn.scale.setTo(.4, .4);
 
-		var create_btn = this.game.add.button(560, 400, 'create_btn', this.saveCanvasClick, this);
+		var create_btn = this.game.add.button(560, 400, 'create_btn', this.OnClickCreate, this);
 		create_btn.scale.setTo(.4, .4);
-
 	},
 
+	OnClickCreate: function(){
+		var name = "name."+"png";
+		this.saveCanvas(name);
+	},
 
 	back_1: function() {
 		var me = this;
@@ -122,7 +128,7 @@ Photo.prototype = {
 
 		//sticker1
 		me.sticker1 = me.game.add.sprite(100, 170, 'sticker1');
-		me.sticker1.scale.setTo(.3, .3);
+		me.sticker1.scale.setTo(0.3, 0.3);
 		me.sticker1.inputEnabled = true;
 		me.sticker1.input.enableDrag(false, true);
 		me.sticker1.inputEnabled = true;
@@ -130,7 +136,7 @@ Photo.prototype = {
 
 		//sticker2
 		me.sticker2 = me.game.add.sprite(100, 220, 'sticker2');
-		me.sticker2.scale.setTo(.3, .3);
+		me.sticker2.scale.setTo(0.3, 0.3);
 		me.sticker2.inputEnabled = true;
 		me.sticker2.input.enableDrag(false, true);
 		me.sticker2.inputEnabled = true;
@@ -138,7 +144,7 @@ Photo.prototype = {
 
 		//sticker3
 		me.sticker3 = me.game.add.sprite(100, 270, 'sticker3');
-		me.sticker3.scale.setTo(.3, .3);
+		me.sticker3.scale.setTo(0.3, 0.3);
 		me.sticker3.inputEnabled = true;
 		me.sticker3.input.enableDrag(false, true);
 		me.sticker3.inputEnabled = true;
@@ -146,62 +152,54 @@ Photo.prototype = {
 
 		//sticker4
 		me.sticker4 = me.game.add.sprite(620, 170, 'sticker4');
-		me.sticker4.scale.setTo(.3, .3);
+		me.sticker4.scale.setTo(0.3, 0.3);
 		me.sticker4.inputEnabled = true;
 		me.sticker4.input.enableDrag(false, true);
 		me.sticker4.inputEnabled = true;
 		me.sticker4.input.enableDrag(false, true);
 		//sticker5
 		me.sticker5 = me.game.add.sprite(620, 220, 'sticker5');
-		me.sticker5.scale.setTo(.3, .3);
+		me.sticker5.scale.setTo(0.3, 0.3);
 		me.sticker5.inputEnabled = true;
 		me.sticker5.input.enableDrag(false, true);
 		me.sticker5.inputEnabled = true;
 		me.sticker5.input.enableDrag(false, true);
 		//sticker4
 		me.sticker6 = me.game.add.sprite(620, 270, 'sticker6');
-		me.sticker6.scale.setTo(.3, .3);
+		me.sticker6.scale.setTo(0.3, 0.3);
 		me.sticker6.inputEnabled = true;
 		me.sticker6.input.enableDrag(false, true);
 		me.sticker6.inputEnabled = true;
 		me.sticker6.input.enableDrag(false, true);
 	},
 
-	saveCanvas: function (link, filename) {
-		console.log(document.querySelector("canvas"));
-		link.href = document.querySelector("canvas").toDataURL();
-		link.download = filename;
-		console.log(link.href);
+	saveCanvas: function (filename) {
+		var data = game.canvas.toDataURL();
+		console.log("canvas save: " + data);
+
+		var users = Parse.Object.extend("users");
+		var users = new users();
+		var that = this;
+		var email = "";
+		users.save({
+			nickname: name,
+			email: email,
+			photo: data,
+			conditions: true
+		}).then(function(object) {
+			//alert("Información Enviada");
+			console.log('Información Enviada');
+			console.log(name);
+
+			//sendInformationButton.destroy();
+			that.game.state.start("GameTitle");
+		});
+
 	},
-	saveCanvasClick: function(){
 
-		var name = "name."+"png";
-
-		this.saveCanvas(this, name);
-	},
-
-	// sendInformationGame: function () {
-	// 	var users = Parse.Object.extend("users");
-	// 	var users = new users();
-	// 	var that = this;
-	// 	users.save({
-	// 		nickname: name,
-	// 		email: email,
-	// 		conditions: true
-	// 	}).then(function(object) {
-	// 		//alert("Información Enviada");
-	// 		console.log('Información Enviada');
-	// 		console.log(name);
-
-	// 		sendInformationButton.destroy();
-	// 		that.game.state.start("GameTitle");
-	// 	});
-//
+	restartGame: function() {
+		this.game.state.start("GameTitle");
+	}
 
 
-		restartGame: function() {
-			this.game.state.start("GameTitle");
-		}
-
-
-	};
+};
